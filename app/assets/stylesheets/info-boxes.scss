@@ -38,6 +38,7 @@
   margin-top: 10px;
   margin-right: 10px;
   float: right;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .info-box--tag-container {
@@ -48,6 +49,7 @@
   bottom: -15px;
   position: absolute;
   margin-left: 10px;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .info-box--tag {
@@ -62,6 +64,7 @@
   padding: 20px;
   text-align: center;
   color: white;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .info-box--heading {
