@@ -1,0 +1,32 @@
+$grid-base-unit: 10px;
+
+@for $i from 0 through 20 {
+  .mb--#{$i} {
+    margin-bottom: $i * $grid-base-unit;
+  }
+  .mt--#{$i} {
+    margin-top: $i * $grid-base-unit;
+  }
+  .mr--#{$i} {
+    margin-right: $i * $grid-base-unit;
+  }
+  .mv--#{$i} {
+    margin-top: $i * $grid-base-unit;
+    margin-bottom: $i * $grid-base-unit;
+  }
+
+  .pt--#{$i} {
+    padding-top: $i * $grid-base-unit;
+  }
+  .pb--#{$i} {
+    padding-top: $i * $grid-base-unit;
+  }
+  .pv--#{$i} {
+    padding-top: $i * $grid-base-unit;
+    padding-bottom: $i * $grid-base-unit;
+  }
+  .ph--#{$i} {
+    padding-left: $i * $grid-base-unit;
+    padding-right: $i * $grid-base-unit;
+  }
+}

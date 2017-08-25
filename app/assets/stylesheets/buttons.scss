@@ -1,0 +1,12 @@
+.btn-primary {
+  background-color: $night-shadz;
+  border-color: transparent;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 10px 60px;
+  transition: background-color 0.5s ease-in-out;
+  &:hover {
+    background-color: lighten($night-shadz, 10%);
+    border-color: transparent;
+  }
+}

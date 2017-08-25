@@ -1,0 +1,37 @@
+.top-navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+  }
+}
+
+.navigation--link {
+  font-family: 'Artifika', serif;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: darken(white, 30%);
+    text-decoration: none;
+  }
+}
+
+.navigation--link__primary {
+  @extend .navigation--link;
+  order: -1;
+  margin-bottom: 20px;
+  @media (min-width: $screen-sm-min) {
+    order: 0;
+    margin-bottom: 0;
+  }
+}
+
+.navigation--logo {
+  height: 44px;
+}

@@ -1,0 +1,13 @@
+.container__slim {
+  @extend .container;
+  @media (min-width: $screen-md-min) {
+    width: 60%;
+  }
+}
+
+.container__slimer {
+  @extend .container;
+  @media (min-width: $screen-md-min) {
+    width: 40%;
+  }
+}

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Artifika');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+@import "colors";
+
+$font-family-base: 'Raleway', sans-serif;
+$text-color: #4A4A4A;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "buttons";
+@import "images";
+@import "navigations";
+@import "containers";
+@import "panels";
+@import "spacer";
+@import "info-boxes";
+@import "grid";
+@import "backgrounds";
+@import "footer";
+@import "lists";

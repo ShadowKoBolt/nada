@@ -1,0 +1,10 @@
+.full-width-image__home {
+  background-image: url(image_path('full-width-image__home.jpg'));
+  background-size: cover;
+  width: 100%;
+}
+
+.full-width-image__background {
+  background-image: url(image_path('full-width-image__background.png'));
+  width: 100%;
+}

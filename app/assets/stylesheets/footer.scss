@@ -1,0 +1,17 @@
+.footer--heading {
+  border-bottom: 1px solid white;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.footer--social-media-icon {
+  margin-right: 20px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  img {
+    height: 60px;
+  }
+}
