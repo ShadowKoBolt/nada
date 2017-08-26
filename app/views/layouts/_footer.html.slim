@@ -1,0 +1,31 @@
+.full-width-background__night-shadz
+  .container
+    .row.pt--4
+      .col-sm-4.mb--4
+        .footer--heading Contact
+        p
+          | General:
+          =< mail_to 'info@nada.uk.com'
+        p
+          | Membership:
+          =< mail_to 'membership@nada.uk.com'
+        p
+          | Magazine:
+          =< mail_to 'magazine@nada.uk.com'
+      .col-sm-4.mb--4
+        .footer--heading Social Media
+        p
+          = link_to Rails.application.secrets[:facebook_url], class: 'footer--social-media-icon', title: 'Facebook' do
+            = image_tag 'icons/facebook.svg', alt: 'Facebook'
+          = link_to Rails.application.secrets[:twitter_url], class: 'footer--social-media-icon', title: 'Twitter' do
+            = image_tag 'icons/twitter.svg', alt: 'Twitter'
+          = link_to Rails.application.secrets[:instagram_url], class: 'footer--social-media-icon', title: 'Instagram' do
+            = image_tag 'icons/instagram.svg', alt: 'Instagram'
+      .col-sm-4.mb--4
+        .footer--heading Already a Member
+        - if current_user
+          p Signed in as #{current_user.email}
+          p = link_to 'Sign out', destroy_user_session_path, method: :delete
+        - else
+          p = link_to 'Sign in', sign_in_path
+          p = link_to 'Forgotten password', forgotten_password_path

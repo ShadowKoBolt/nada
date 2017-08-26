@@ -1,86 +1,39 @@
-.full-width-image__home
-  .container__slim
-    .top-navigation
-      = link_to 'About',page_path('about'), class: 'navigation--link'
-      = link_to 'Join', page_path('join'), class: 'navigation--link'
-      = link_to root_path, class: 'navigation--link__primary' do
-        = image_tag 'logo__white.svg', alt: 'Home', class: 'navigation--logo'
-      = link_to 'Events', page_path('events'), class: 'navigation--link'
-      = link_to 'Classes', page_path('classes'), class: 'navigation--link'
+- content_for :header do
+  = render 'layouts/header_home'
 
-  .spacer__200
+.row
+  .col-sm-8
 
-  .container__slimer
-    .panel__transparent
-      p.panel--section NADA the Association for Arabic Dance offers you the opportunity to be part of an exciting network by becoming a NADA member today!
-      = button_to 'Join', page_path('join'), class: 'btn btn-primary'
+    h1.h3 NADA membership includes:
 
-  .spacer__100
+    p
+      ul
+        li 3 magazines per year of the highest quality. The magazine includes information on events, classes and topics of interest for beginners to advanced level dancers on Egyptian Bellydance, Turkish Bellydance, Tribal Belly Dance, Folklore and other styles of Middle Eastern/Arabic Dance.
+        li Discount entry at NADA friendly events where you can meet other NADA members.
+        li Discount at NADA friendly workshops.
+        li A directory of tutorial videos from UK teachers.
+        li Links with existing national and international Middle Eastern dance associations.
+        li A yearly AGM with workshops from the best teachers in UK and beyond together with a show.
+        li Liaising with existing teacher training facilities nationally.
+        li Reduced rates of advertising in our magazine.
+        li Online resources to advertise and list your classes & events.
+        li Online directory of UK teachers so you can find the one nearest to you!
+        li Online resources to sell your second hand costumes and buy costumes from other dancers.
+        li A community to discuss dance and meet other dancers in the UK dance scene.
 
-.full-width-image__background
-  .container.pv--2
-    .row
-      .col-sm-8
+  .col-sm-4.pt--2
 
-        h1.h3 NADA membership includes:
+    a.info-box href="#"
+      .info-box--top
+        .info-box--eye-catch-container
+          .info-box--eye-catch 2nd Sept
+        .info-box--tag-container
+          .info-box--tag Berkshire
+      .info-box--bottom
+        .info-box--heading JWAD Summer School
+        .info-box--body Join us for 2, 5 or 7 days of dance and fun!
 
-        p
-          ul
-            li 3 magazines per year of the highest quality. The magazine includes information on events, classes and topics of interest for beginners to advanced level dancers on Egyptian Bellydance, Turkish Bellydance, Tribal Belly Dance, Folklore and other styles of Middle Eastern/Arabic Dance.
-            li Discount entry at NADA friendly events where you can meet other NADA members.
-            li Discount at NADA friendly workshops.
-            li A directory of tutorial videos from UK teachers.
-            li Links with existing national and international Middle Eastern dance associations.
-            li A yearly AGM with workshops from the best teachers in UK and beyond together with a show.
-            li Liaising with existing teacher training facilities nationally.
-            li Reduced rates of advertising in our magazine.
-            li Online resources to advertise and list your classes & events.
-            li Online directory of UK teachers so you can find the one nearest to you!
-            li Online resources to sell your second hand costumes and buy costumes from other dancers.
-            li A community to discuss dance and meet other dancers in the UK dance scene.
+    a.info-box href="#"
+      .info-box--bottom
+        .info-box--heading MORE EVENTS
 
-      .col-sm-4.pt--2
-
-        a.info-box href="#"
-          .info-box--top
-            .info-box--eye-catch-container
-              .info-box--eye-catch 2nd Sept
-            .info-box--tag-container
-              .info-box--tag Berkshire
-          .info-box--bottom
-            .info-box--heading JWAD Summer School
-            .info-box--body Join us for 2, 5 or 7 days of dance and fun!
-
-        a.info-box href="#"
-          .info-box--bottom
-            .info-box--heading MORE EVENTS
-
-.full-width-background__night-shadz
-  .container
-    .row.pt--4
-      .col-sm-4.mb--4
-        .footer--heading Contact
-        p
-          | General:
-          =< mail_to 'info@nada.uk.com'
-        p
-          | Membership:
-          =< mail_to 'membership@nada.uk.com'
-        p
-          | Magazine:
-          =< mail_to 'magazine@nada.uk.com'
-      .col-sm-4.mb--4
-        .footer--heading Social Media
-        p
-          = link_to Rails.application.secrets[:facebook_url], class: 'footer--social-media-icon', title: 'Facebook' do
-            = image_tag 'icons/facebook.svg', alt: 'Facebook'
-          = link_to Rails.application.secrets[:twitter_url], class: 'footer--social-media-icon', title: 'Twitter' do
-            = image_tag 'icons/twitter.svg', alt: 'Twitter'
-          = link_to Rails.application.secrets[:instagram_url], class: 'footer--social-media-icon', title: 'Instagram' do
-            = image_tag 'icons/instagram.svg', alt: 'Instagram'
-      .col-sm-4.mb--4
-        .footer--heading Already a Member
-        p
-          = link_to 'Login', '#'
-        p
-          = link_to 'Forgotten password', '#'

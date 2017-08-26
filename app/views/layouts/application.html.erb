@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%- if content_for?(:header) %>
+      <%= content_for(:header) %>
+    <%- else %>
+      <%= render 'layouts/header' %>
+    <%- end %>
+    <div class="full-width-image__background">
+      <div class="container pv--2">
+        <%= render 'layouts/flash' %>
+        <%= yield %>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

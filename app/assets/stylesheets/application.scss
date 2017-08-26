@@ -4,6 +4,7 @@
 @import "colors";
 
 $font-family-base: 'Raleway', sans-serif;
+$font-size-h1: 20px;
 $text-color: #4A4A4A;
 
 @import "bootstrap-sprockets";
@@ -19,3 +20,6 @@ $text-color: #4A4A4A;
 @import "backgrounds";
 @import "footer";
 @import "lists";
+@import "headings";
+@import "forms";
+@import "links";

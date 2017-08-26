@@ -1,0 +1,6 @@
+- if flash[:alert].present?
+  .alert.alert-danger.text-center
+    = flash[:alert]
+- if flash[:notice].present?
+  .alert.alert-info.text-center
+    = flash[:notice]

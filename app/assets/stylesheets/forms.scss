@@ -1,0 +1,23 @@
+.form {
+  margin-bottom: 40px;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.form-control {
+  height: 45px;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+
+  h2 {
+    font-size: 18px;
+  }
+  ul {
+    list-style: none;
+  }
+}
