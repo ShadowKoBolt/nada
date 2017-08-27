@@ -7,9 +7,15 @@ Rails.application.routes.draw do
     get 'forgotten_password', to: 'devise/passwords#new'
   end
 
-  get 'members_area' => "members_area#show"
+  get 'members_area' => 'members_area#show'
+  get 'video/:id' => 'videos#show', as: 'video'
+  get 'videos' => 'videos#index'
 
   namespace :admin do
-    resources :videos, except: [:show]
+    resources :videos, except: [:show] do
+      collection do
+        post :reorder
+      end
+    end
   end
 end

@@ -35,3 +35,4 @@ en:
     attributes:
       video:
         url: "URL"
+        tag_list: "Tags"

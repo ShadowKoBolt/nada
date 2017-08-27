@@ -1,5 +1,3 @@
-= render 'layouts/member_nav'
-
 .container
   .row.mb--4
     .col-xs-12
@@ -9,4 +7,8 @@
   .row.mb--2
     .col-xs-12.text-center
       h2 Latest videos
-
+      .row
+        - @latest_videos.each do |video|
+          .col-sm-4.mb--2
+            = render 'videos/info_box', video: video
+      p = link_to 'See more', videos_path

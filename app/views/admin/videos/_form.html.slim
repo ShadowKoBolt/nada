@@ -5,6 +5,9 @@
     p.help-block e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ
     = f.text_field :url, class: 'form-control', autofocus: true
   .form-group
+    = f.label :tag_list
+    = f.text_field :tag_list, class: 'form-control'
+  .form-group
     = f.label :name do
       = Video.human_attribute_name(:name)
       small optional

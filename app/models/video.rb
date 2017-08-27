@@ -1,11 +1,22 @@
 class Video < ApplicationRecord
+  acts_as_taggable
+
   validate :youtube_url_kind
   validates :name, presence: true
 
   before_validation :autocomplete_name
   before_validation :set_thumbnail_url
 
-  default_scope { order(position: :desc) }
+  default_scope { order(position: :asc) }
+
+  def tag_list
+    tags.join(', ')
+  end
+
+  def youtube_id
+    return nil unless youtube_url
+    youtube_url.id
+  end
 
   private
 
@@ -20,7 +31,7 @@ class Video < ApplicationRecord
 
   def youtube_video
     return nil unless youtube_url
-    @youtube_video = Yt::Video.new(id: youtube_url.id)
+    @youtube_video = Yt::Video.new(id: youtube_id)
   end
 
   def autocomplete_name

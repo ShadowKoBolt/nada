@@ -25,6 +25,12 @@
   justify-content: space-between;
 }
 
+.info-box--top__no-background {
+  @extend .info-box--top;
+  background-image: none;
+  height: auto;
+}
+
 .info-box--eye-catch {
   background-color: $brown-rust;
   height: 60px;
@@ -65,6 +71,11 @@
   text-align: center;
   color: white;
   transition: background-color ease-in-out 0.5s;
+}
+
+.info-box--bottom__fixed-height {
+  @extend .info-box--bottom;
+  min-height: 90px;
 }
 
 .info-box--heading {

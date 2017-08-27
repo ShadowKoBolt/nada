@@ -21,3 +21,11 @@
     background-color: lighten($brown-rust, 10%);
   }
 }
+
+.btn-danger {
+  @extend .btn-primary;
+  background-color: $brand-danger;
+  &:hover {
+    background-color: lighten($brand-danger, 10%);
+  }
+}

@@ -6,15 +6,22 @@ h1.text-center Videos
 table.table.table--vertical-align-middle
   thead
     tr
-      th
+      th Sort
       th = Video.human_attribute_name(:name)
       th = Video.human_attribute_name(:url)
+      th = Video.human_attribute_name(:tag_list)
       th
-  tbody
+      th
+  tbody data-js-sortable=reorder_admin_videos_path
     - @videos.each do |video|
-      tr
-        td = image_tag video.thumbnail_url, class: 'thumbnail__admin'
+      tr id="video-#{video.id}"
+        td data-js-sortable-handle=true
+          = image_tag video.thumbnail_url, class: 'thumbnail__admin'
         td = video.name
         td = link_to video.url
+        td = video.tag_list
         td
           = link_to 'Edit', edit_admin_video_path(video), class: 'btn btn-xs btn-warning'
+        td
+          = link_to 'Remove', admin_video_path(video), class: 'btn btn-xs btn-danger', method: :delete,
+            data: { confirm: 'Are you sure you want to remove this video?' }
