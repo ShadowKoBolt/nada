@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   end
 
   get 'members_area' => "members_area#show"
+
+  namespace :admin do
+    resources :videos, except: [:show]
+  end
 end

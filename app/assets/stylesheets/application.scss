@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Artifika');
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
 
 @import "colors";
 
 $font-family-base: 'Raleway', sans-serif;
 $font-size-h1: 20px;
+$font-size-h2: 18px;
 $text-color: #4A4A4A;
+$state-info-bg: $pea-green;
+$state-info-text: white;
+$component-active-bg: $night-shadz;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -23,3 +27,4 @@ $text-color: #4A4A4A;
 @import "headings";
 @import "forms";
 @import "links";
+@import "tables";

@@ -1,0 +1,20 @@
+h1.text-center Videos
+
+.text-center.mb--4
+  = link_to 'Add video', new_admin_video_path, class: 'btn btn-primary'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th
+      th = Video.human_attribute_name(:name)
+      th = Video.human_attribute_name(:url)
+      th
+  tbody
+    - @videos.each do |video|
+      tr
+        td = image_tag video.thumbnail_url, class: 'thumbnail__admin'
+        td = video.name
+        td = link_to video.url
+        td
+          = link_to 'Edit', edit_admin_video_path(video), class: 'btn btn-xs btn-warning'

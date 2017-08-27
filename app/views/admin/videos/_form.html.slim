@@ -1,0 +1,14 @@
+= form_for [:admin, @video], html: { class: 'form' } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :url
+    p.help-block e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    = f.text_field :url, class: 'form-control', autofocus: true
+  .form-group
+    = f.label :name do
+      = Video.human_attribute_name(:name)
+      small optional
+    p.help-block This will be retrieved from the video if left blank
+    = f.text_field :name, class: 'form-control'
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

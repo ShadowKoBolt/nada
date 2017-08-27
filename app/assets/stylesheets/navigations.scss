@@ -35,3 +35,33 @@
 .navigation--logo {
   height: 44px;
 }
+
+.tab-nav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+  }
+}
+
+.tab-nav--link {
+  font-size: 20px;
+  padding: 0 20px 10px 20px;
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.tab-nav--link__active {
+  @extend .tab-nav--link;
+  font-weight: 600;
+  border-bottom: 2px solid $gray-dark;
+  margin-bottom: 20px;
+  order: -1;
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+    order: 0;
+  }
+}

@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title= Rails.application.secrets[:site_name]
+    = csrf_meta_tags
+    = render 'layouts/favicon'
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    - if content_for?(:header)
+      = content_for(:header)
+    - else
+      = render 'layouts/header'
+    .full-width-image__background
+      .container.pv--2
+        = render 'layouts/flash'
+        = yield
+    = render 'layouts/footer'

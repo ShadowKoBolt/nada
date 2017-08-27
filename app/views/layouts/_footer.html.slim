@@ -25,6 +25,7 @@
         .footer--heading Already a Member
         - if current_user
           p Signed in as #{current_user.email}
+          p = link_to 'Members area', members_area_path
           p = link_to 'Sign out', destroy_user_session_path, method: :delete
         - else
           p = link_to 'Sign in', sign_in_path

@@ -21,3 +21,8 @@
     list-style: none;
   }
 }
+
+.form label small {
+  margin-left: 20px;
+  color: $gray-light;
+}

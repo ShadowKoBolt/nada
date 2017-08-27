@@ -61,4 +61,4 @@ en:
       not_locked: "was not locked"
       not_saved:
         one: "There was a problem with your submission:"
-        other: "There were %{count} problems with your submissions:"
+        other: "There were %{count} problems with your submission:"
