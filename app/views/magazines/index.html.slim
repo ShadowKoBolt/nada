@@ -1,0 +1,8 @@
+- @magazines.in_groups_of(6) do |group|
+  .row
+    - group.each do |magazine|
+      - unless magazine.nil?
+        .col-xs-2.mb--2.text-center
+          = link_to magazine.file.url do
+            = image_tag magazine.file.url(:thumbnail), class: 'img-responsive mb--1'
+            = magazine.name

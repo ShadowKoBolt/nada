@@ -1,4 +1,7 @@
 class Video < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
   acts_as_taggable
 
   validate :youtube_url_kind

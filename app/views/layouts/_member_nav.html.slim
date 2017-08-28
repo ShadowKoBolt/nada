@@ -4,7 +4,8 @@
       class: (controller_path == 'members_area' ? 'tab-nav--link__active' : 'tab-nav--link')
     = link_to 'Videos', videos_path,
       class: (controller_path == 'videos' ? 'tab-nav--link__active' : 'tab-nav--link')
-    = link_to 'Magazine', '#', class: 'tab-nav--link'
+    = link_to 'Magazine', magazines_path,
+      class: (controller_path == 'magazines' ? 'tab-nav--link__active' : 'tab-nav--link')
     = link_to 'My account', '#', class: 'tab-nav--link'
     - if policy(:admin).show?
       = link_to 'Admin', admin_videos_path, class: 'tab-nav--link',

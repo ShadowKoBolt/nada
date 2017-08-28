@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'members_area' => 'members_area#show'
   get 'video/:id' => 'videos#show', as: 'video'
   get 'videos' => 'videos#index'
+  get 'magazines' => 'magazines#index'
 
   namespace :admin do
     resources :videos, except: [:show] do

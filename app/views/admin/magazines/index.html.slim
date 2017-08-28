@@ -6,6 +6,7 @@ h1.text-center Magazines
 table.table.table--vertical-align-middle
   thead
     tr
+      th Sort
       th = Magazine.human_attribute_name(:name)
       th
       th
@@ -13,6 +14,8 @@ table.table.table--vertical-align-middle
     - @magazines.each do |magazine|
       tr id="magazine-#{magazine.id}"
         td data-js-sortable-handle=true
+          = image_tag magazine.file.url(:thumbnail), class: 'thumbnail__admin-xs'
+        td
           = magazine.name
         td
           = link_to 'Edit', edit_admin_magazine_path(magazine), class: 'btn btn-xs btn-warning'
