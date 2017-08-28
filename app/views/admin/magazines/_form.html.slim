@@ -1,0 +1,12 @@
+= form_for [:admin, @magazine], html: { class: 'form', multipart: true } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :file
+    - if @magazine.file.present?
+      p.help-block = link_to 'View existing file', @magazine.file.url
+    = f.file_field :file, class: 'form-control'
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

@@ -17,5 +17,10 @@ Rails.application.routes.draw do
         post :reorder
       end
     end
+    resources :magazines, except: [:show] do
+      collection do
+        post :reorder
+      end
+    end
   end
 end

@@ -75,7 +75,9 @@
 
 .info-box--bottom__fixed-height {
   @extend .info-box--bottom;
-  min-height: 90px;
+  @media (min-width: $screen-sm-min) {
+    min-height: 90px;
+  }
 }
 
 .info-box--heading {

@@ -1,0 +1,21 @@
+h1.text-center Magazines
+
+.text-center.mb--4
+  = link_to 'Add magazine', new_admin_magazine_path, class: 'btn btn-primary'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th = Magazine.human_attribute_name(:name)
+      th
+      th
+  tbody data-js-sortable=reorder_admin_magazines_path
+    - @magazines.each do |magazine|
+      tr id="magazine-#{magazine.id}"
+        td data-js-sortable-handle=true
+          = magazine.name
+        td
+          = link_to 'Edit', edit_admin_magazine_path(magazine), class: 'btn btn-xs btn-warning'
+        td
+          = link_to 'Remove', admin_magazine_path(magazine), class: 'btn btn-xs btn-danger', method: :delete,
+            data: { confirm: 'Are you sure you want to remove this magazine?' }

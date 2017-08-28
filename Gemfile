@@ -6,13 +6,16 @@ git_source(:github) do |repo_name|
 end
 
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'aws-sdk'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'figaro'
 gem 'high_voltage'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'paperclip', '~> 5.0.0'
 gem 'pg', '~> 0.18'
 gem 'plyr-rails'
 gem 'puma', '~> 3.7'
