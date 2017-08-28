@@ -40,9 +40,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
-    ansi (1.5.0)
     arel (8.0.0)
-    ast (2.3.0)
     autoprefixer-rails (7.1.1)
       execjs
     aws-sdk (2.10.9)
@@ -71,7 +69,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -79,8 +76,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.6.1)
-    ethon (0.10.1)
-      ffi (>= 1.3.0)
     execjs (2.7.0)
     ffi (1.9.18)
     figaro (1.1.1)
@@ -89,11 +84,6 @@ GEM
       activesupport (>= 4.2.0)
     high_voltage (3.0.0)
     i18n (0.8.6)
-    image_info (1.1.2)
-      image_size
-      typhoeus
-    image_size (1.5.0)
-    iso8601 (0.9.1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -104,16 +94,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.1.0)
     jwt (1.5.6)
-    link_thumbnailer (3.3.1)
-      activesupport (>= 3.0)
-      image_info (~> 1.1)
-      json (~> 2.1)
-      net-http-persistent (~> 3.0)
-      nokogiri (~> 1.7)
-      rake (>= 0.9)
-      video_info (~> 2.7)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -130,15 +111,9 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_json (1.12.1)
-    net-http-persistent (3.0.0)
-      connection_pool (~> 2.2)
-    net_http_timeout_errors (0.3.0)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    oga (2.10)
-      ast
-      ruby-ll (~> 2.1)
     orm_adapter (0.5.0)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
@@ -190,10 +165,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rmagick (2.16.0)
-    ruby-ll (2.1.2)
-      ansi
-      ast
     ruby_dep (1.5.0)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -229,16 +200,10 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
-    typhoeus (1.3.0)
-      ethon (>= 0.9.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    video_info (2.7)
-      iso8601 (~> 0.9.1)
-      net_http_timeout_errors (~> 0.3.0)
-      oga (~> 2.7)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -276,7 +241,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
-  link_thumbnailer
   listen (>= 3.0.5, < 3.2)
   paperclip (~> 5.0.0)
   pg (~> 0.18)
@@ -285,7 +249,6 @@ DEPENDENCIES
   puma (~> 3.7)
   pundit
   rails (~> 5.1.3)
-  rmagick (~> 2.15)
   sass-rails (~> 5.0)
   slim
   spring
