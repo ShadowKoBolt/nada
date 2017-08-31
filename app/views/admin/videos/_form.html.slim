@@ -6,7 +6,7 @@
     = f.text_field :url, class: 'form-control', autofocus: true
   .form-group
     = f.label :tag_list
-    = f.text_field :tag_list, class: 'form-control'
+    = f.text_field :tag_list, class: 'form-control', data: { js: 'tags' }
   .form-group
     = f.label :name do
       = Video.human_attribute_name(:name)

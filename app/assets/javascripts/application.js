@@ -4,6 +4,7 @@
 //= require bootstrap-sprockets
 //= require jquery-ui/core
 //= require jquery-ui/widgets/sortable
+//= require jquery-ui/widgets/autocomplete
 //= require plyr
 //= require_tree .
 
@@ -20,5 +21,11 @@ document.addEventListener("turbolinks:load", function() {
       var data = $(this).sortable('serialize');
       $.post(url, data);
     }
+  });
+
+  // Tags
+  $('#video_tag_list').tagsInput({
+    width: '100%',
+    height: 'auto'
   });
 });

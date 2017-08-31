@@ -47,6 +47,7 @@ class Video < ApplicationRecord
   def set_thumbnail_url
     return unless url_changed?
     return unless youtube_video
-    self.thumbnail_url = youtube_video.thumbnails['maxres']['url']
+    thumbnails = youtube_video.thumbnails
+    self.thumbnail_url = thumbnails.fetch('maxres', {})['url'] || thumbnails.fetch('high', {})['url']
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'forgotten_password', to: 'devise/passwords#new'
   end
 
+  get 'tags' => 'tags#index'
   get 'members_area' => 'members_area#show'
   get 'video/:id' => 'videos#show', as: 'video'
   get 'videos' => 'videos#index'
