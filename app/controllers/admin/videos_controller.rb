@@ -48,7 +48,7 @@ module Admin
     private
 
     def video_params
-      params.require(:video).permit(:url, :name, :tag_list)
+      params.require(:video).permit(:url, :name, :tag_list, :summary)
     end
   end
 end

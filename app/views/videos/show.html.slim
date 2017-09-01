@@ -1,5 +1,14 @@
 h1.text-center = @video.name
 
+== @video.summary
+
 div class="mb--2" data-type="youtube" data-video-id=@video.youtube_id
 
-.text-center = link_to "See all videos", videos_path
+.text-center
+  = link_to "See all videos", videos_path, class: 'bnt btn-xs btn-warning'
+
+small
+  h3.text-center Disclaimer
+  p NADA strongly recommends that you consult with your physician before beginning any exercise or dance program.  You should be in good physical condition and be able to participate in the exercise.  NADA is not a licensed medical care provider and represents that it has no expertise in diagnosing, examining, or treating medical conditions of any kind, or in determining the effect of any specific exercise on a medical condition.
+  p You should understand that when participating in any exercise or dance program, there is the possibility of physical injury. If you engage in these online dance classes, you agree that you do so at your own risk, are voluntarily participating in these activities, assume all risk of injury to yourself, and agree to release and discharge NADA from any and all claims or causes of action, known or unknown, arising out of NADA negligence.
+

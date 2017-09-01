@@ -28,4 +28,12 @@ document.addEventListener("turbolinks:load", function() {
     width: '100%',
     height: 'auto'
   });
+
+  // Summernote
+  $('[data-js-wysiwyg]').summernote({toolbar: [
+    ['insert', ['link']],
+    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['misc', ['fullscreen', 'undo', 'redo']]
+  ]});
 });

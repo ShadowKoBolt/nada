@@ -13,5 +13,8 @@
       small optional
     p.help-block This will be retrieved from the video if left blank
     = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :summary
+    = f.text_area :summary, class: 'form-control', data: { js_wysiwyg: true }
   .actions
     = f.submit nil, class: 'btn btn-primary'
