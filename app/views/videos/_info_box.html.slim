@@ -1,6 +1,6 @@
 a.info-box href=video_path(video)
-  .info-box--top__no-background
-    = image_tag video.thumbnail_url, class: 'img-responsive'
+  .info-box--top__youtube style="background-image: url('#{video.thumbnail_url}');"
+    .info-box--eye-catch-container
     .info-box--tag-container
       .info-box--tag = video.tag_list
   .info-box--bottom__fixed-height

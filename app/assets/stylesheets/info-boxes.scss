@@ -25,10 +25,12 @@
   justify-content: space-between;
 }
 
-.info-box--top__no-background {
+.info-box--top__youtube {
   @extend .info-box--top;
-  background-image: none;
-  height: auto;
+  height: 231px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 .info-box--eye-catch {

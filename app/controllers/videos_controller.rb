@@ -6,7 +6,7 @@ class VideosController < BaseController
   end
 
   def index
-    @tags = ActsAsTaggableOn::Tag.most_used
+    @tags = ActsAsTaggableOn::Tag.most_used.reorder(:name)
     @videos = Video.all
   end
 end
