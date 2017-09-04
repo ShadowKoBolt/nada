@@ -15,7 +15,7 @@ table.table.table--vertical-align-middle
     - @videos.each do |video|
       tr id="video-#{video.id}"
         td data-js-sortable-handle=true
-          = image_tag video.thumbnail_url, class: 'thumbnail__admin'
+          = image_tag video.thumbnail.url(:fixed), class: 'thumbnail__admin'
         td = video.name
         td = link_to video.url
         td = video.tag_list
