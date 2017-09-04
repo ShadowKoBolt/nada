@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831202135) do
+ActiveRecord::Schema.define(version: 20170903094417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
@@ -77,6 +78,17 @@ ActiveRecord::Schema.define(version: 20170831202135) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.boolean "admin", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "address_line_3"
+    t.string "city"
+    t.string "region"
+    t.string "postcode"
+    t.string "country"
+    t.text "notes"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -85,11 +97,14 @@ ActiveRecord::Schema.define(version: 20170831202135) do
     t.string "name"
     t.string "url"
     t.integer "position", default: -1
-    t.string "thumbnail_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.text "summary"
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.index ["slug"], name: "index_videos_on_slug", unique: true
   end
 

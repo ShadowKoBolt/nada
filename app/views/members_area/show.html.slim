@@ -1,23 +1,25 @@
 .container
   .row.mb--4
     .col-xs-12
-      / TODO: copy
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      h1.text-center Welcome to our members area!
+      p Here you will have access to tutorial videos from top UK teachers, copies of old issues for you to download and read on your kindle or phone and finally a place to list your classes & events.
+      p Make sure you make the most of this members area - all the features within it are exclusive to NADA members ONLY. So, prepare a cuppa, have a browse and if you have any questions please contact our team.
+      p
+        i Happy dancing!
 
   .row.mb--2
-    .col-xs-12.text-center
-      h2 Latest videos
+    .col-xs-8.text-center
+      h2.heading--underline Latest videos
       .row
         - @latest_videos.each do |video|
           .col-sm-4.mb--2
             = render 'videos/info_box', video: video
       p = link_to 'See more', videos_path
-  .row.mb--2
-    .col-xs-12.text-center
-      h2 Latest magazine issues
+    .col-xs-4.text-center
+      h2.heading--underline Latest magazine issues
       .row
         - @latest_magazines.each do |magazine|
-          .col-xs-2.mb--2
+          .col-xs-6.mb--2
             = link_to magazine.file.url do
               = image_tag magazine.file.url(:thumbnail), class: 'img-responsive mb--1'
               = magazine.name

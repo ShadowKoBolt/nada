@@ -1,5 +1,4 @@
 .info-box {
-  margin-top: 20px;
   display: block;
   &:hover {
     text-decoration: none;
@@ -25,12 +24,10 @@
   justify-content: space-between;
 }
 
-.info-box--top__youtube {
+.info-box--top__fluid {
   @extend .info-box--top;
-  height: 231px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: center;
+  background-image: none;
+  height: auto;
 }
 
 .info-box--eye-catch {

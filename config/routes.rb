@@ -24,5 +24,6 @@ Rails.application.routes.draw do
         post :reorder
       end
     end
+    resources :users, except: [:show]
   end
 end

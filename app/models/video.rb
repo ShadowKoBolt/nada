@@ -1,6 +1,9 @@
 class Video < ApplicationRecord
   extend FriendlyId
 
+  has_attached_file :thumbnail, styles: { fixed: ["557x356#"] }
+  validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\z/
+
   friendly_id :name, use: :slugged
   acts_as_taggable
 
@@ -19,6 +22,24 @@ class Video < ApplicationRecord
   def youtube_id
     return nil unless youtube_url
     youtube_url.id
+  end
+
+  def set_thumbnail_url
+    return unless url_changed?
+    return unless youtube_video
+    thumbnails = youtube_video.thumbnails
+    thumbnail_url = thumbnails.fetch('maxres', {})['url'] || thumbnails.fetch('high', {})['url']
+    self.thumbnail = URI.parse(thumbnail_url)
+  end
+
+  class << self
+    def refresh_thumbnails
+      all.each do |video|
+        video.url_will_change!
+        video.set_thumbnail_url
+        video.save
+      end
+    end
   end
 
   private
@@ -42,12 +63,5 @@ class Video < ApplicationRecord
     return unless name_changed?
     return unless youtube_video
     self.name = youtube_video.title
-  end
-
-  def set_thumbnail_url
-    return unless url_changed?
-    return unless youtube_video
-    thumbnails = youtube_video.thumbnails
-    self.thumbnail_url = thumbnails.fetch('maxres', {})['url'] || thumbnails.fetch('high', {})['url']
   end
 end

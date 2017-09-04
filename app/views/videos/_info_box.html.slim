@@ -1,6 +1,6 @@
 a.info-box href=video_path(video)
-  .info-box--top__youtube style="background-image: url('#{video.thumbnail_url}');"
-    .info-box--eye-catch-container
+  .info-box--top__fluid
+    = image_tag video.thumbnail.url(:fixed), class: 'img-responsive'
     .info-box--tag-container
       .info-box--tag = video.tag_list
   .info-box--bottom__fixed-height

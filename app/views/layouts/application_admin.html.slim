@@ -22,7 +22,7 @@ html
             .list-group
               = link_to 'Videos', admin_videos_path, class: "list-group-item #{'active' if controller_name == 'videos'}"
               = link_to 'Magazines', admin_magazines_path, class: "list-group-item #{'active' if controller_name == 'magazines'}"
-              = link_to 'Members', '#', class: "list-group-item"
+              = link_to 'Members', admin_users_path, class: "list-group-item #{'active' if controller_name == 'users'}"
           .col-sm-10
             = yield
     = render 'layouts/footer'

@@ -16,9 +16,9 @@
 
 .btn-warning {
   @extend .btn-primary;
-  background-color: $brown-rust;
+  background-color: $brand-warning;
   &:hover {
-    background-color: lighten($brown-rust, 10%);
+    background-color: lighten($brand-warning, 10%);
   }
 }
 
@@ -28,4 +28,19 @@
   &:hover {
     background-color: lighten($brand-danger, 10%);
   }
+}
+
+.btn-success {
+  @extend .btn-primary;
+  background-color: $brand-success;
+  &:hover {
+    background-color: lighten($brand-success, 10%);
+  }
+}
+
+.form.form-inline .btn-primary {
+  width: auto;
+  padding: 11px 11px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

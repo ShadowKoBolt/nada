@@ -27,3 +27,15 @@
   color: $gray-light;
 }
 
+
+.field_with_errors label {
+  color: $brand-danger;
+}
+
+.field_with_errors input {
+  background: lighten($brand-danger, 35%);
+}
+
+.form.form-inline {
+  margin-bottom: 0;
+}

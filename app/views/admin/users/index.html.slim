@@ -1,0 +1,30 @@
+h1 Users
+
+.well.mb--4
+  .row
+    .col-sm-6
+      = link_to 'Add user', new_admin_user_path, class: 'btn btn-success'
+    .col-sm-6.text-right
+      = form_tag admin_users_path, method: :get, class: 'form form-inline' do
+        = text_field_tag :term, params[:term], class: 'form-control'
+        = submit_tag 'Search', class: 'btn btn-primary'
+        - if params[:term].present?
+          small
+            = link_to 'Clear', admin_users_path, class: 'text-danger'
+
+table.table
+  thead
+    tr
+      th = User.human_attribute_name(:email)
+      th = User.human_attribute_name(:name)
+      th
+  tbody data-js-sortable=reorder_admin_videos_path
+    - @users.each do |user|
+      tr
+        td = mail_to user.email
+        td = user.name
+        td.text-right
+          .btn-group
+            = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', admin_user_path(user), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this user?' }

@@ -1,7 +1,7 @@
-h1.text-center Videos
+h1 Videos
 
-.text-center.mb--4
-  = link_to 'Add video', new_admin_video_path, class: 'btn btn-primary'
+.well.mb--4
+  = link_to 'Add video', new_admin_video_path, class: 'btn btn-success'
 
 table.table.table--vertical-align-middle
   thead
@@ -10,8 +10,7 @@ table.table.table--vertical-align-middle
       th = Video.human_attribute_name(:name)
       th = Video.human_attribute_name(:url)
       th = Video.human_attribute_name(:tag_list)
-      th
-      th
+      th style="min-width: 140px;"
   tbody data-js-sortable=reorder_admin_videos_path
     - @videos.each do |video|
       tr id="video-#{video.id}"
@@ -20,8 +19,8 @@ table.table.table--vertical-align-middle
         td = video.name
         td = link_to video.url
         td = video.tag_list
-        td
-          = link_to 'Edit', edit_admin_video_path(video), class: 'btn btn-xs btn-warning'
-        td
-          = link_to 'Remove', admin_video_path(video), class: 'btn btn-xs btn-danger', method: :delete,
-            data: { confirm: 'Are you sure you want to remove this video?' }
+        td.text-right
+          .btn-group
+            = link_to 'Edit', edit_admin_video_path(video), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', admin_video_path(video), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this video?' }
