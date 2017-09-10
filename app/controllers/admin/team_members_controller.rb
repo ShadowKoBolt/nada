@@ -39,7 +39,7 @@ module Admin
     end
 
     def reorder
-      params[:team_member].each.with_index do |id, index|
+      params['team-member'].each.with_index do |id, index|
         TeamMember.find(id).update(position: index + 1)
       end
       render status: :ok, body: nil
