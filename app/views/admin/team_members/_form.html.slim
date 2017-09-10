@@ -1,0 +1,32 @@
+= form_for [:admin, @team_member], html: { class: 'form', multipart: true } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :role
+    = f.text_field :role, class: 'form-control'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
+  .form-group
+    = f.label :image_credit do
+      = TeamMember.human_attribute_name(:image_credit)
+      small Optional
+    = f.text_field :image_credit, class: 'form-control'
+  .form-group
+    = f.label :team
+    = f.select :team_id, options_from_collection_for_select(Team.all, :id, :name, f.object.team_id),
+      { include_blank: 'No team' }, class: 'form-control'
+  .form-group
+    = f.label :description do
+      = TeamMember.human_attribute_name(:description)
+      small Optional
+    = f.text_area :description, class: 'form-control', data: { js_wysiwyg: true }
+  .form-group
+    = f.label :contact_details do
+      = TeamMember.human_attribute_name(:contact_details)
+      small Optional
+    = f.text_area :contact_details, class: 'form-control', data: { js_wysiwyg: true }
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

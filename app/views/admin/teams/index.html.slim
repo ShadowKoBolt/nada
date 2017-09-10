@@ -1,0 +1,20 @@
+h1 Teams
+
+.well.mb--4
+  = link_to 'Add team', new_admin_team_path, class: 'btn btn-success'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th Sort
+      th style="min-width: 140px;"
+  tbody data-js-sortable=reorder_admin_teams_path
+    - @teams.each do |team|
+      tr id="team-#{team.id}"
+        td data-js-sortable-handle=true
+          = team.name
+        td.text-right
+          .btn-group
+            = link_to 'Edit', edit_admin_team_path(team), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', admin_team_path(team), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this team?' }

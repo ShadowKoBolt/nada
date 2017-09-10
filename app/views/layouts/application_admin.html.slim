@@ -23,6 +23,8 @@ html
               = link_to 'Videos', admin_videos_path, class: "list-group-item #{'active' if controller_name == 'videos'}"
               = link_to 'Magazines', admin_magazines_path, class: "list-group-item #{'active' if controller_name == 'magazines'}"
               = link_to 'Members', admin_users_path, class: "list-group-item #{'active' if controller_name == 'users'}"
+              = link_to 'Team members', admin_team_members_path,
+                class: "list-group-item #{'active' if controller_name.in? %w{team_members teams} }"
           .col-sm-10
             = yield
     = render 'layouts/footer'

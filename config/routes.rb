@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'forgotten_password', to: 'devise/passwords#new'
   end
 
+  get 'about' => 'about#show'
   get 'tags' => 'tags#index'
   get 'members_area' => 'members_area#show'
   get 'video/:id' => 'videos#show', as: 'video'
@@ -20,6 +21,16 @@ Rails.application.routes.draw do
       end
     end
     resources :magazines, except: [:show] do
+      collection do
+        post :reorder
+      end
+    end
+    resources :team_members, except: [:show] do
+      collection do
+        post :reorder
+      end
+    end
+    resources :teams, except: [:show] do
       collection do
         post :reorder
       end

@@ -1,0 +1,25 @@
+.col-sm-3
+  = content_tag(*team_member_content_tag_attributes(team_member)) do
+    = image_tag team_member.image.url(:thumb), alt: team_member.name, title: team_member.image_credit, class: 'team-member-image'
+    .team-member-name = team_member.name
+    .team-member-title = team_member.role
+
+- if team_member.description? || team_member.contact_details?
+  .modal.fade role="dialog" tabindex="-1" id="team-member-#{team_member.id}"
+    .modal-dialog role="document"
+      .modal-content
+        .modal-header
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            span aria-hidden="true"  ×
+          h4.modal-title = team_member.name
+        .modal-body
+          p
+            strong = team_member.role
+          == simple_format team_member.description
+          - if team_member.contact_details?
+            p
+              strong Contact details
+            == simple_format team_member.contact_details
+        .modal-footer
+          button.btn.btn-default data-dismiss="modal" type="button"  Close
+

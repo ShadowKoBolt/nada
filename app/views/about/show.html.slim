@@ -1,0 +1,15 @@
+.text-center.mb--4
+  h1 Meet the team
+  p There have been a great many changes since our AGM and Day of Dance in February this year, so we wanted to take this opportunity for you to meet the team.
+
+- if @ungrouped_team_members.any?
+  .row.mb--4
+    - @ungrouped_team_members.each do |team_member|
+      = render 'about/team_member', team_member: team_member
+
+- @teams.each do |team|
+  - if team.team_members.any?
+    h2.text-center = team.name
+    .row.mb--4
+      - team.team_members.each do |team_member|
+        = render 'about/team_member', team_member: team_member
