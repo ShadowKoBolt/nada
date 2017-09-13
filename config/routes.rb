@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
     get 'join', to: 'devise/registrations#new'
     get 'forgotten_password', to: 'devise/passwords#new'
+    get 'my_account', to: 'registrations#edit'
   end
 
   get 'about' => 'about#show'
@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'video/:id' => 'videos#show', as: 'video'
   get 'videos' => 'videos#index'
   get 'magazines' => 'magazines#index'
+  get 'classes' => 'classes#index'
+  get 'classes/markers' => 'classes#markers'
+  post 'classes/markers' => 'classes#markers'
 
   namespace :admin do
     resources :videos, except: [:show] do
@@ -35,6 +38,8 @@ Rails.application.routes.draw do
         post :reorder
       end
     end
-    resources :users, except: [:show]
+    resources :users, except: [:show] do
+      resources :dance_classes, except: [:show]
+    end
   end
 end

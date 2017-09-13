@@ -1,7 +1,10 @@
 .top-navigation
   = link_to 'About', about_path, class: 'navigation--link'
-  = link_to 'Join', join_path, class: 'navigation--link'
+  - if current_user
+    = link_to 'Members area', members_area_path, class: 'navigation--link'
+  - else
+    = link_to 'Join', join_path, class: 'navigation--link'
   = link_to root_path, class: 'navigation--link__primary' do
     = image_tag 'logo__white.svg', alt: 'Home', class: 'navigation--logo'
   = link_to 'Events', page_path('events'), class: 'navigation--link'
-  = link_to 'Classes', page_path('classes'), class: 'navigation--link'
+  = link_to 'Classes', classes_path, class: 'navigation--link'

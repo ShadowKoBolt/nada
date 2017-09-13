@@ -1,0 +1,19 @@
+h1 Classes
+
+.mb--4
+  = form_tag classes_markers_path, class: 'form form-inline', remote: true do
+    .form-group>
+      = text_field_tag :location, params[:location], class: 'form-control', placeholder: 'Location'
+    .form-group>
+      = select_tag :distance, options_for_select(DanceClass::DISTANCE_OPTIONS, params[:distance]),
+        class: 'form-control'
+    .form-group
+      = select_tag :style, options_for_select(DanceClass::STYLE_OPTIONS, params[:style]), class: 'form-control',
+        include_blank: 'Any style'
+    = submit_tag 'Filter', class: 'btn btn-primary', data: { disable_with: false }
+
+.row
+  .col-sm-8
+    #map style='height: 400px;'
+  .col-sm-4
+    #classes.classes-list.well

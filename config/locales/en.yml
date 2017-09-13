@@ -36,3 +36,7 @@ en:
       video:
         url: "URL"
         tag_list: "Tags"
+      user:
+        teacher: "This member is a teacher"
+        teacher_email: "Email for contact about teaching"
+        teacher_phone: "Phone number for contact about teaching"

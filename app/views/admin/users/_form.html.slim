@@ -1,5 +1,6 @@
 = form_for [:admin, @user], html: { class: 'form' } do |f|
   = render 'layouts/errors', errors: f.object.errors.full_messages
+  h2 Basic details
   .row
     .col-sm-6
       .form-group
@@ -55,5 +56,32 @@
       .form-group
         = f.label :notes
         = f.text_area :notes, class: 'form-control'
+  h2 Teaching details
+  .row
+    .col-xs-12
+      .form-group
+        .checkbox
+          = f.label :teacher do
+            = f.check_box :teacher, data: { js_reveals: '[data-js-teaching-fields]' }
+            = User.human_attribute_name(:teacher)
+  div data-js-teaching-fields=true
+    .row
+      .col-sm-6
+        .form-group
+          = f.label :teacher_email do
+            = User.human_attribute_name(:teacher_email)
+            small Optional
+          = f.email_field :teacher_email, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = f.label :teacher_phone do
+            = User.human_attribute_name(:teacher_phone)
+            small Optional
+          = f.text_field :teacher_phone, class: 'form-control'
+    .row
+      .col-xs-12
+        .form-group
+          = f.label :teaching_locations
+          = f.text_field :teaching_locations, class: 'form-control'
   .actions
     = f.submit nil, class: 'btn btn-primary'

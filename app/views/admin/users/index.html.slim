@@ -17,14 +17,17 @@ table.table
     tr
       th = User.human_attribute_name(:email)
       th = User.human_attribute_name(:name)
+      th = User.human_attribute_name(:teacher)
       th
   tbody data-js-sortable=reorder_admin_videos_path
     - @users.each do |user|
       tr
         td = mail_to user.email
         td = user.name
+        td = user.teacher ? 'Yes' : 'No'
         td.text-right
           .btn-group
+            = link_to 'Classes', admin_user_dance_classes_path(user), class: 'btn btn-xs btn-primary' if user.teacher
             = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-xs btn-warning'
             = link_to 'Remove', admin_user_path(user), class: 'btn btn-xs btn-danger', method: :delete,
               data: { confirm: 'Are you sure you want to remove this user?' }
