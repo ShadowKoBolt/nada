@@ -6,6 +6,7 @@ class ClassesController < ApplicationController
     dance_classes = DanceClass.all
     dance_classes = dance_classes.near("#{params[:location]}, United Kingdom", params[:distance]) if params[:location].present?
     dance_classes = dance_classes.where(style: params[:style]) if params[:style].present?
+    dance_classes = dance_classes.search(params[:teacher_name]) if params[:teacher_name].present?
     dance_classes = dance_classes.page(params[:page]).per(8)
     class_markers = Gmaps4rails.build_markers(dance_classes) do |dance_class, marker|
       marker.lat dance_class.latitude

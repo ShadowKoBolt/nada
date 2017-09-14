@@ -8,6 +8,11 @@ class DanceClass < ApplicationRecord
                       ['Within 50 miles', 50],
                       ['Within 100 miles', 100]].freeze
 
+  include PgSearch
+  pg_search_scope :search,
+    associated_against: { user: [:first_name, :last_name] },
+    using: { tsearch: { prefix: true, any_word: true }, trigram: { threshold: 0.1 } }
+
   belongs_to :user
 
   geocoded_by :full_street_address

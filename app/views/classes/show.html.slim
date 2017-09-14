@@ -2,13 +2,23 @@ h1 = @dance_class.name
 
 .row
   .col-xs-8
-    .row.well
-      .col-xs-6
-        strong> Style:
-        = @dance_class.style
-      .col-xs-6
-        strong> Level:
-        = @dance_class.level
+    .well
+      .row
+        .col-xs-6
+          strong> Style:
+          = @dance_class.style
+        .col-xs-6
+          strong> Level:
+          = @dance_class.level
+      .row
+        - if @dance_class.user.teacher_email?
+          .col-xs-6
+            strong> Email:
+            = mail_to @dance_class.user.teacher_email
+        - if @dance_class.user.teacher_phone?
+          .col-xs-6
+            strong> Phone
+            = @dance_class.user.teacher_phone
     .row
       .col-xs-12
         == @dance_class.description

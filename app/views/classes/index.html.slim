@@ -7,6 +7,8 @@ h1 Classes
     .form-group>
       = select_tag :distance, options_for_select(DanceClass::DISTANCE_OPTIONS, params[:distance]),
         class: 'form-control'
+    .form-group>
+      = text_field_tag :teacher_name, params[:teacher_name], class: 'form-control', placeholder: "Teacher's name"
     .form-group
       = select_tag :style, options_for_select(DanceClass::STYLE_OPTIONS, params[:style]), class: 'form-control',
         include_blank: 'Any style'
