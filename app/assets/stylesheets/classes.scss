@@ -1,3 +1,18 @@
-.classes-list {
-  @extend .list-unstyled;
+.classes--list-item {
+  @extend .well;
+}
+
+.classes--list-item-heading {
+  font-size: 1.3em;
+}
+
+.classes--list-item-details {
+  margin-top: 10px;
+}
+
+.classes--list-item-cta {
+  float: right;
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
 }

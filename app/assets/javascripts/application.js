@@ -71,56 +71,92 @@ document.addEventListener("turbolinks:load", function() {
 
   // Maps
   function createSidebarLi(json) {
-    return ("<li class='classes--list-item'><a>" + json.serviceObject.title + "</a></li>");
+    return ("<div class='classes--list-item'><a class='classes--list-item-heading'>" +
+      json.serviceObject.title +
+      "</a><div class='hide classes--list-item-details'>Style: " +
+      json.data.style +
+      "<br />" +
+      "Teacher: " +
+      json.data.teacher_name +
+      "<br />" +
+      "<a class='classes--list-item-cta' href='/class/" +
+      json.data.id +
+      "'>More info</a>" +
+      "<div class='clearfix'></div>" +
+      "</div></div>");
   };
 
   function bindLiToMarker($li, marker) {
-    $li.on('click', function(){
+    $li.on('click', function(event){
       handler.getMap().setZoom(14);
       marker.setMap(handler.getMap()); //because clusterer removes map property from marker
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
+      $(event.target).siblings('.classes--list-item-details').toggleClass('hide');
     })
   };
 
-  function createSidebar(json_array) {
+  function handleMapData(data, meta) {
+    $('#classes').html('');
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(data);
+      _.each(markers, function(json, index){
+        json.data = data[index];
+        json.marker = markers[index];
+      });
+      createSidebar(markers, meta);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  }
+
+  function createSidebar(json_array, meta) {
+    $('.next').addClass('hide');
+    $('.prev').addClass('hide');
     _.each(json_array, function(json){
       var $li = $( createSidebarLi(json) );
       $li.appendTo('#classes');
       bindLiToMarker($li, json.marker);
     });
+    if (meta.next !== null) {
+      var nextLink = $('.next');
+      nextLink.removeClass('hide');
+      nextLink.attr('href', '/classes/markers?page=' + meta.next);
+    }
+    if (meta.prev !== null) {
+      var prevLink = $('.prev');
+      prevLink.removeClass('hide');
+      prevLink.attr('href', '/classes/markers?page=' + meta.prev);
+    }
   };
 
   if ($('#map').length > 0) {
     $.get('/classes/markers', function(data) {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-        markers = handler.addMarkers(data);
-        _.each(markers, function(json, index){
-          json.marker = markers[index];
-        });
-        createSidebar(markers);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
+      handleMapData(data.markers, data.meta);
     });
   }
 
   $('form[action="/classes/markers"]').submit(function(event) {
     var url = '/classes/markers?' + $(event.target).serialize();
     $.get(url, function(data) {
-      $('#classes').html('');
-      handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-        markers = handler.addMarkers(data);
-        _.each(markers, function(json, index){
-          json.marker = markers[index];
-        });
-        createSidebar(markers);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
+      handleMapData(data.markers, data.meta);
     });
   });
 
+  $('.next').click(function(event) {
+    event.preventDefault();
+    var url = $(event.target).attr('href');
+    $.get(url, function(data) {
+      handleMapData(data.markers, data.meta);
+    });
+  });
+
+  $('.prev').click(function(event) {
+    event.preventDefault();
+    var url = $(event.target).attr('href');
+    $.get(url, function(data) {
+      handleMapData(data.markers, data.meta);
+    });
+  });
 });

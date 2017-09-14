@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'classes' => 'classes#index'
   get 'classes/markers' => 'classes#markers'
   post 'classes/markers' => 'classes#markers'
+  get 'class/:id' => 'classes#show'
 
   namespace :admin do
     resources :videos, except: [:show] do

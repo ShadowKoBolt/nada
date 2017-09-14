@@ -14,6 +14,12 @@ h1 Classes
 
 .row
   .col-sm-8
-    #map style='height: 400px;'
+    #map style='height: 600px;'
   .col-sm-4
-    #classes.classes-list.well
+    #classes.classes-list
+    #classes_pagination
+      .row
+        .col-xs-6
+          = link_to 'Previous', classes_markers_path(page: 'page_placeholder'), class: 'btn btn-primary prev hide'
+        .col-xs-6.text-right
+          = link_to 'Next', classes_markers_path(page: 'page_placeholder'), class: 'btn btn-primary next hide'

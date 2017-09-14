@@ -18,4 +18,8 @@ class DanceClass < ApplicationRecord
   def full_street_address
     [address_1, address_2, address_3, city, region, postcode, 'United Kingdom'].reject(&:blank?).join(', ')
   end
+
+  def address_html
+    [address_1, address_2, address_3, city, region, postcode, 'United Kingdom'].reject(&:blank?).join('<br />')
+  end
 end

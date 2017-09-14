@@ -1,0 +1,35 @@
+h1 = @dance_class.name
+
+.row
+  .col-xs-8
+    .row.well
+      .col-xs-6
+        strong> Style:
+        = @dance_class.style
+      .col-xs-6
+        strong> Level:
+        = @dance_class.level
+    .row
+      .col-xs-12
+        == @dance_class.description
+  .col-xs-4.text-right
+    h2 Address
+    .mb--2
+      == @dance_class.address_html
+    div style='width: 100%;'
+      #one_marker style='width: 100%; height: 300px;'
+
+javascript:
+  handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'one_marker'}}, function(){
+    markers = handler.addMarkers([
+      {
+        lat: #{@dance_class.latitude},
+        lng: #{@dance_class.longitude},
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
+  });
+
