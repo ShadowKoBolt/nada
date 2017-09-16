@@ -42,6 +42,7 @@ class Admin::UsersController < Admin::BaseController
     params.require(:user).permit(:email, :phone, :first_name, :last_name,
                                  :address_line_1, :address_line_2, :address_line_3,
                                  :city, :region, :postcode, :country, :notes,
-                                 :teacher, :teacher_email, :teacher_phone, :teaching_locations)
+                                 :teacher, :teacher_email, :teacher_phone, :teaching_locations,
+                                 :join_date, :renewal_date, :status)
   end
 end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  STATUS_OPTIONS = %w[ New Lapsed Confirmed ].freeze
+
   include PgSearch
   pg_search_scope :search,
     against: [:email, :first_name, :last_name],
@@ -19,7 +21,8 @@ class User < ApplicationRecord
     properties :email, :phone, :first_name, :last_name,
                :address_line_1, :address_line_2, :address_line_3,
                :city, :region, :postcode, :country, :notes, :teacher,
-               :teacher_email, :teacher_phone, :teaching_locations
+               :teacher_email, :teacher_phone, :teaching_locations, :join_date,
+               :renewal_date, :status
 
     validates :email, :address_line_1, :postcode, :country, presence: true
 

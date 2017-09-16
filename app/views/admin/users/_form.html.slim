@@ -56,6 +56,21 @@
       .form-group
         = f.label :notes
         = f.text_area :notes, class: 'form-control'
+  h2 Membership details
+  .row
+    .col-xs-6
+      .form-group
+        = f.label :join_date
+        = f.text_field :join_date, type: 'date', class: 'form-control'
+    .col-xs-6
+      .form-group
+        = f.label :renewal_date
+        = f.text_field :renewal_date, type: 'date', class: 'form-control'
+  .row
+    .col-xs-6
+      .form-group
+        = f.label :status
+        = f.select :status, User::STATUS_OPTIONS, { include_blank: true }, class: 'form-control'
   h2 Teaching details
   .row
     .col-xs-12

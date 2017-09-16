@@ -37,6 +37,7 @@ gem 'yt-url'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'letter_opener'
 end
 
 group :development do
