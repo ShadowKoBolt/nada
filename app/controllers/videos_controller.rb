@@ -3,10 +3,12 @@ class VideosController < BaseController
 
   def show
     @video = Video.friendly.find(params[:id])
+    authorize @video
   end
 
   def index
-    @tags = ActsAsTaggableOn::Tag.most_used.reorder(:name)
+    authorize :video
     @videos = Video.all
+    @tags = ActsAsTaggableOn::Tag.most_used.reorder(:name)
   end
 end

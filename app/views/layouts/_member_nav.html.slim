@@ -1,13 +1,14 @@
-.container
-  .tab-nav.mb--2.mt--2
-    = link_to 'Members area', members_area_path,
-      class: (controller_path == 'members_area' ? 'tab-nav--link__active' : 'tab-nav--link')
-    = link_to 'Videos', videos_path,
-      class: (controller_path == 'videos' ? 'tab-nav--link__active' : 'tab-nav--link')
-    = link_to 'Magazine', magazines_path,
-      class: (controller_path == 'magazines' ? 'tab-nav--link__active' : 'tab-nav--link')
-    = link_to 'My account', my_account_path,
-      class: (controller_path == 'registrations' ? 'tab-nav--link__active' : 'tab-nav--link')
-    - if policy(:admin).show?
-      = link_to 'Admin', admin_videos_path, class: 'tab-nav--link',
-        class: (controller_path.include?('admin/') ? 'tab-nav--link__active' : 'tab-nav--link')
+- if current_user
+  .container
+    .tab-nav.mb--2.mt--2
+      = link_to 'Members area', members_area_path,
+        class: (controller_path == 'members_area' ? 'tab-nav--link__active' : 'tab-nav--link')
+      = link_to 'Videos', videos_path,
+        class: (controller_path == 'videos' ? 'tab-nav--link__active' : 'tab-nav--link')
+      = link_to 'Magazine', magazines_path,
+        class: (controller_path == 'magazines' ? 'tab-nav--link__active' : 'tab-nav--link')
+      = link_to 'My account', my_account_path,
+        class: (controller_path == 'registrations' ? 'tab-nav--link__active' : 'tab-nav--link')
+      - if policy(:admin).show?
+        = link_to 'Admin', admin_videos_path, class: 'tab-nav--link',
+          class: (controller_path.include?('admin/') ? 'tab-nav--link__active' : 'tab-nav--link')

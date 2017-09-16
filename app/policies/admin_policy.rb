@@ -1,5 +1,5 @@
 class AdminPolicy < ApplicationPolicy
   def show?
-    @user.admin?
+    @user && @user.admin?
   end
 end

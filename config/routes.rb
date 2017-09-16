@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
-    get 'join', to: 'devise/registrations#new'
+    get 'join', to: 'registrations#new'
     get 'forgotten_password', to: 'devise/passwords#new'
     get 'my_account', to: 'registrations#edit'
   end
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'classes/markers' => 'classes#markers'
   post 'classes/markers' => 'classes#markers'
   get 'class/:id' => 'classes#show'
+
+  get 'subscription/new' => 'subscriptions#new', as: 'new_subscription'
 
   namespace :admin do
     resources :videos, except: [:show] do

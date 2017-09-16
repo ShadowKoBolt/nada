@@ -13,7 +13,7 @@ h1.text-center Sign up
       .form-group
         = f.label :phone
         = f.text_field :phone, class: 'form-control'
-  .row
+  .row.mb--4
     .col-sm-6
       .form-group
         = f.label :first_name
@@ -22,20 +22,20 @@ h1.text-center Sign up
       .form-group
         = f.label :last_name
         = f.text_field :last_name, class: 'form-control'
-  .row.mb--4
+  .row
     .col-sm-6
       .form-group
         = f.label :password do
           = User.human_attribute_name(:password)
           - if @minimum_password_length
             small
-              | (#{@minimum_password_length} characters minimum)
-        .help-block Leave blank if you don't want to change it
+              | required (#{@minimum_password_length} characters minimum)
         = f.password_field :password, autocomplete: "off", class: "form-control"
     .col-sm-6
       .form-group
-        = f.label :password_confirmation
-        .help-block Leave blank if you don't want to change it
+        = f.label :password_confirmation do
+          = User.human_attribute_name(:password_confirmation)
+          small required
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
   h2 Your address
   .row
@@ -74,15 +74,9 @@ h1.text-center Sign up
       .form-group
         = f.label :country
         = f.country_select :country, { priority_countries: ['GB'] }, class: 'form-control'
-  .row.mb--4
-    .col-xs-12
-      .form-group
-        = f.label :current_password do
-          = User.human_attribute_name(:current_password)
-          small required
-        .help-block We need your current password to confirm your changes
-        = f.password_field :current_password, autocomplete: "off", class: 'form-control'
   .row
     .col-xs-12
       .actions
-        = f.submit "Update", class: "btn btn-primary"
+        = f.submit "Sign up", class: "btn btn-primary"
+.text-center
+  = render "devise/shared/links"
