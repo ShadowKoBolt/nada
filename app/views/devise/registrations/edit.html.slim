@@ -82,6 +82,24 @@ h1.text-center Sign up
           small required
         .help-block We need your current password to confirm your changes
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+
+  - if @user.stripe_subscriptions.any?
+    h2 Subscription info
+    - @user.stripe_subscriptions.each do |subscription|
+      .well
+        p
+          strong> Status
+          = subscription.status.humanize
+        p
+          strong> Started on
+          = l(Time.at(subscription.start).to_date)
+        p
+          strong> Renews on
+          = l(Time.at(subscription.current_period_end).to_date)
+        p
+          strong> Payment method
+          = format_source(@user.stripe_sources.first)
+
   .row
     .col-xs-12
       .actions

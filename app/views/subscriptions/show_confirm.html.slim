@@ -1,0 +1,22 @@
+.text-center
+  h1 Enter payment details
+
+  =  form_for @subscription, url: create_subscription_path do |f|
+    = f.hidden_field :promo_code
+    = f.hidden_field :stripe_token
+    = render 'layouts/errors', errors: f.object.errors.full_messages
+    .row
+      .col-sm-4.col-sm-offset-4
+        .well
+          h2 Nada annual membership
+          p #{ Money.new(@plan.amount, @plan.currency).format }/#{@plan.interval}
+          - if @subscription.coupon
+            span.text-danger = format_coupon @subscription.coupon
+
+        .form-group
+          #card-element
+        #card-errors.hide
+
+        .actions
+          = f.submit 'Confirm', class: 'btn btn-primary'
+

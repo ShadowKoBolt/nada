@@ -16,6 +16,21 @@ class User < ApplicationRecord
     [first_name, last_name].join(' ')
   end
 
+  def stripe_customer
+    return nil unless stripe_customer_id?
+    @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
+  end
+
+  def stripe_subscriptions
+    return [] unless stripe_customer
+    @stripe_subscriptions ||= stripe_customer.subscriptions
+  end
+
+  def stripe_sources
+    return [] unless stripe_customer
+    stripe_customer.sources
+  end
+
   class AdminForm < Reform::Form
     model :user
     properties :email, :phone, :first_name, :last_name,
@@ -56,7 +71,8 @@ class User < ApplicationRecord
     model :user
     properties :email, :phone, :first_name, :last_name,
                :address_line_1, :address_line_2, :address_line_3,
-               :city, :region, :postcode, :country, :password, :password_confirmation
+               :city, :region, :postcode, :country, :password, :password_confirmation,
+               :stripe_subscriptions, :stripe_sources
     property :current_password, virtual: true
 
     validates :email, :address_line_1, :postcode, :country, presence: true

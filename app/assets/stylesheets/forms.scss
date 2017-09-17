@@ -43,3 +43,13 @@
 .note-editable.panel-body {
   height: 200px;
 }
+
+#card-element {
+  background: white;
+  padding: 10px;
+}
+
+#card-errors {
+  @extend .alert;
+  @extend .alert-danger;
+}

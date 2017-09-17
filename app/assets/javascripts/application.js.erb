@@ -50,6 +50,24 @@ document.addEventListener("turbolinks:load", function() {
     }
   });
 
+  // JS Toggle
+  $('[data-js-toggle]').each(function(index, element) {
+    $(element).click(function(event) {
+      event.preventDefault();
+      var finder = $(event.target).data('js-toggle')
+      var elementToToggle = $(finder);
+      elementToToggle.toggleClass('hide');
+    });
+  });
+
+  // JS Show if has value
+  $('[data-js-show-if-has-value]').each(function(index, element) {
+    if ($(element).val() !== '') {
+      var targetId = $(element).data('js-show-if-has-value');
+      $(targetId).removeClass('hide');
+    }
+  });
+
   // JS Reveals
   var updateReveals = function(checkbox) {
     var idToReveal = checkbox.data('js-reveals');
@@ -159,4 +177,44 @@ document.addEventListener("turbolinks:load", function() {
       handleMapData(data.markers, data.meta);
     });
   });
+
+  // Stripe
+  var stripe = Stripe('<%= ENV.fetch('STRIPE_PUBLIC_API_KEY') %>');
+  var elements = stripe.elements();
+
+  if ($('#card-element').length > 0) {
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    card.addEventListener('change', function(event) {
+      var displayError = $('#card-errors');
+      if (event.error) {
+        displayError.removeClass('hide');
+        displayError.text(event.error.message);
+      } else {
+        displayError.addClass('hide');
+        displayError.text('');
+      }
+    });
+
+    var form = $('#new_subscription');
+    form.submit(function(event) {
+      if ($('#subscription_stripe_token').val() !== '') {
+        return true;
+      }
+      else {
+        event.preventDefault();
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            var displayError = $('#card-errors');
+            displayError.text(result.error.message);
+            $('#new_subscription input[type="submit"]').attr('disabled', false);
+          } else {
+            $('#subscription_stripe_token').val(result.token.id);
+            $('#new_subscription').submit();
+          }
+        });
+      }
+    });
+  }
 });

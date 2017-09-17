@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   post 'classes/markers' => 'classes#markers'
   get 'class/:id' => 'classes#show'
 
+  get 'subscription/one_off' => 'subscriptions#one_off', as: 'one_off_subscription'
   get 'subscription/new' => 'subscriptions#new', as: 'new_subscription'
+
+  get 'subscription/confirm' => 'subscriptions#show_confirm', as: 'show_confirmation_subscription'
+  post 'subscription/confirm' => 'subscriptions#show_confirm'
+
+  post 'subscription/create' => 'subscriptions#create', as: 'create_subscription'
 
   namespace :admin do
     resources :videos, except: [:show] do
