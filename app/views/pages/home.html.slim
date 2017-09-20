@@ -1,4 +1,4 @@
-- content_for :header do
+- content_for :post_header do
   = render 'layouts/header_home'
 
 .row
@@ -23,17 +23,26 @@
 
   .col-sm-4.pt--2
 
-    a.info-box.mb--3 href="#"
+    a.info-box.mb--3 href="https://jwaadtraining.uk/fantasia-festival"
       .info-box--top
         .info-box--eye-catch-container
-          .info-box--eye-catch 2nd Sept
+          .info-box--eye-catch__left Sponsored
+          .info-box--eye-catch 19th Dec
         .info-box--tag-container
-          .info-box--tag Berkshire
+          .info-box--tag London
       .info-box--bottom
-        .info-box--heading JWAD Summer School
-        .info-box--body Join us for 2, 5 or 7 days of dance and fun!
+        .info-box--heading Fantasia Festival
+        .info-box--body
+          p
+            | A new contemporary UK belly dance festival
+            br
+            | Inspiring teachers
+            br
+            | Fabulous dancing
+            br
+            | Exclusing shopping
 
-    a.info-box href="#"
+    a.info-box href=events_path
       .info-box--bottom
         .info-box--heading MORE EVENTS
 

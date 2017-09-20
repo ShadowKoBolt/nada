@@ -4,12 +4,12 @@ class SubscriptionsController < BaseController
   end
 
   def new
-    @plan = Stripe::Plan.retrieve(ENV.fetch('STRIPE_PLAN_NAME'))
+    @plan = Stripe::Plan.retrieve(current_user.appropriate_plan_name)
     @subscription = Subscription.new
   end
 
   def show_confirm
-    @plan = Stripe::Plan.retrieve(ENV.fetch('STRIPE_PLAN_NAME'))
+    @plan = Stripe::Plan.retrieve(current_user.appropriate_plan_name)
     @subscription = Subscription.new(show_confirm_params)
     if @subscription.valid?
     else
@@ -18,7 +18,7 @@ class SubscriptionsController < BaseController
   end
 
   def create
-    @plan = Stripe::Plan.retrieve(ENV.fetch('STRIPE_PLAN_NAME'))
+    @plan = Stripe::Plan.retrieve(current_user.appropriate_plan_name)
     @subscription = Subscription.new(create_params)
     if @subscription.valid?
       begin

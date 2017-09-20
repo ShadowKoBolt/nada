@@ -54,7 +54,7 @@ class RegistrationsController < Devise::RegistrationsController
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     params.require(:user).permit(:email, :phone, :first_name, :last_name,
                                  :address_line_1, :address_line_2, :address_line_3,
-                                 :city, :region, :postcode, :country, :password, :password_confirmation,
+                                 :city, :region, :postcode, :password, :password_confirmation,
                                  :current_password)
   end
 end

@@ -46,6 +46,14 @@
   transition: background-color ease-in-out 0.5s;
 }
 
+.info-box--eye-catch__left {
+  color: white;
+  background: $pea-green;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px 10px;
+}
+
 .info-box--tag-container {
   position: relative;
 }

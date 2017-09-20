@@ -31,6 +31,10 @@ class User < ApplicationRecord
     stripe_customer.sources
   end
 
+  def appropriate_plan_name
+    country == 'GB' ? ENV['STRIPE_PLAN_NAME_UK'] : ENV['STRIPE_PLAN_NAME_INTERNATIONAL']
+  end
+
   class AdminForm < Reform::Form
     model :user
     properties :email, :phone, :first_name, :last_name,
@@ -75,7 +79,7 @@ class User < ApplicationRecord
                :stripe_subscriptions, :stripe_sources
     property :current_password, virtual: true
 
-    validates :email, :address_line_1, :postcode, :country, presence: true
+    validates :email, :address_line_1, :postcode, presence: true
     validates :password, length: { minimum: 6 }, if: Proc.new { |u| u.password.present? }
     validates_uniqueness_of :email
     validate do

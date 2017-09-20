@@ -8,7 +8,7 @@
     .row
       .col-sm-4.col-sm-offset-4
         .well
-          h2 Nada annual membership
+          h2 = @plan.name
           p #{ Money.new(@plan.amount, @plan.currency).format }/#{@plan.interval}
           - if @subscription.coupon
             span.text-danger = format_coupon @subscription.coupon

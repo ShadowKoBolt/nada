@@ -70,10 +70,13 @@ h1.text-center Sign up
           small required
         = f.text_field :postcode, class: 'form-control'
   .row.mb--4
-    .col-sm-6
+    .col-sm-12
       .form-group
         = f.label :country
-        = f.country_select :country, { priority_countries: ['GB'] }, class: 'form-control'
+        p.help-block
+          | If you need to change the country you get your magazine sent to please contact us as it can result
+          |  in price changes
+        = f.country_select :country, { priority_countries: ['GB'] }, class: 'form-control', disabled: true
   .row.mb--4
     .col-xs-12
       .form-group
