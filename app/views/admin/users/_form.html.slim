@@ -98,5 +98,13 @@
         .form-group
           = f.label :teaching_locations
           = f.text_field :teaching_locations, class: 'form-control'
+  h2 Teaching details
+  .row
+    .col-xs-12
+      .form-group
+        .checkbox
+          = f.label :admin do
+            = f.check_box :admin
+            = User.human_attribute_name(:admin)
   .actions
     = f.submit nil, class: 'btn btn-primary'

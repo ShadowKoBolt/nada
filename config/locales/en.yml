@@ -37,6 +37,7 @@ en:
         url: "URL"
         tag_list: "Tags"
       user:
+        admin: "This member is an admin"
         teacher: "This member is a teacher"
         teacher_email: "Email for contact about teaching"
         teacher_phone: "Phone number for contact about teaching"

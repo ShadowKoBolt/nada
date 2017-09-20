@@ -50,6 +50,6 @@ class Admin::UsersController < Admin::BaseController
                                  :address_line_1, :address_line_2, :address_line_3,
                                  :city, :region, :postcode, :country, :notes,
                                  :teacher, :teacher_email, :teacher_phone, :teaching_locations,
-                                 :join_date, :renewal_date, :status)
+                                 :join_date, :renewal_date, :status, :admin)
   end
 end
