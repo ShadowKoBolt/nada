@@ -132,20 +132,28 @@ document.addEventListener("turbolinks:load", function() {
   function createSidebar(json_array, meta) {
     $('.next').addClass('hide');
     $('.prev').addClass('hide');
-    _.each(json_array, function(json){
-      var $li = $( createSidebarLi(json) );
-      $li.appendTo('#classes');
-      bindLiToMarker($li, json.marker);
-    });
-    if (meta.next !== null) {
-      var nextLink = $('.next');
-      nextLink.removeClass('hide');
-      nextLink.attr('href', '/classes/markers?page=' + meta.next);
+    $('#no-results').addClass('hide');
+    $('#results').addClass('hide');
+    if (json_array.length > 0) {
+      $('#results').removeClass('hide');
+      _.each(json_array, function(json){
+        var $li = $( createSidebarLi(json) );
+        $li.appendTo('#classes');
+        bindLiToMarker($li, json.marker);
+      });
+      if (meta.next !== null) {
+        var nextLink = $('.next');
+        nextLink.removeClass('hide');
+        nextLink.attr('href', '/classes/markers?page=' + meta.next);
+      }
+      if (meta.prev !== null) {
+        var prevLink = $('.prev');
+        prevLink.removeClass('hide');
+        prevLink.attr('href', '/classes/markers?page=' + meta.prev);
+      }
     }
-    if (meta.prev !== null) {
-      var prevLink = $('.prev');
-      prevLink.removeClass('hide');
-      prevLink.attr('href', '/classes/markers?page=' + meta.prev);
+    else {
+      $('#no-results').removeClass('hide');
     }
   };
 

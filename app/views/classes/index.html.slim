@@ -14,7 +14,7 @@ h1 Classes
         include_blank: 'Any style'
     = submit_tag 'Filter', class: 'btn btn-primary', data: { disable_with: false }
 
-.row
+.row#results
   .col-sm-8
     #map style='height: 600px;'
   .col-sm-4
@@ -25,3 +25,6 @@ h1 Classes
           = link_to 'Previous', classes_markers_path(page: 'page_placeholder'), class: 'btn btn-primary prev hide'
         .col-xs-6.text-right
           = link_to 'Next', classes_markers_path(page: 'page_placeholder'), class: 'btn btn-primary next hide'
+.row#no-results
+  .col-xs-12
+    .alert.alert-info No results found for this search
