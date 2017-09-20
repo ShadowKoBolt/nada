@@ -1,7 +1,14 @@
+require 'csv'
+
 class Admin::UsersController < Admin::BaseController
   def index
     @users = User.all
     @users = @users.search(params[:term]) if params[:term].present?
+  end
+
+  def download
+    @users = User.all
+    send_data @users.to_csv, filename: "users-#{Date.today}.csv"
   end
 
   def new

@@ -50,6 +50,9 @@ Rails.application.routes.draw do
     end
     resources :users, except: [:show] do
       resources :dance_classes, except: [:show]
+      collection do
+        get :download
+      end
     end
   end
 end

@@ -15,8 +15,8 @@
 }
 
 .info-box--top {
-  background-image: url(image_path('examples/info-box.jpg'));
-  background-size: cover;
+  background-image: url(image_path('fantasia.jpg'));
+  background-size: contain;
   background-position-y: center;
   height: 200px;
   display: flex;

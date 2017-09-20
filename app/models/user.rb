@@ -12,6 +12,22 @@ class User < ApplicationRecord
 
   has_many :dance_classes, dependent: :destroy
 
+  class << self
+    def to_csv
+      attributes = User.new.attributes.keys
+      attributes.delete(:encrypted_password)
+      attributes.delete(:reset_password_token)
+
+      CSV.generate(headers: true) do |csv|
+        csv << attributes
+
+        all.each do |user|
+          csv << attributes.map{ |attr| user.send(attr) }
+        end
+      end
+    end
+  end
+
   def name
     [first_name, last_name].join(' ')
   end

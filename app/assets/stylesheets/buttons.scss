@@ -38,6 +38,14 @@
   }
 }
 
+.btn-info {
+  @extend .btn-primary;
+  background-color: $brand-info;
+  &:hover {
+    background-color: lighten($brand-info, 10%);
+  }
+}
+
 .form.form-inline .btn-primary {
   width: auto;
   padding: 11px 11px;

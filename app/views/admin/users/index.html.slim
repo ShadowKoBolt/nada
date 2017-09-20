@@ -3,7 +3,8 @@ h1 Users
 .well.mb--4
   .row
     .col-sm-6
-      = link_to 'Add user', new_admin_user_path, class: 'btn btn-success'
+      => link_to 'Add user', new_admin_user_path, class: 'btn btn-success'
+      = link_to 'Download', download_admin_users_path, class: 'btn btn-info'
     .col-sm-6.text-right
       = form_tag admin_users_path, method: :get, class: 'form form-inline' do
         = text_field_tag :term, params[:term], class: 'form-control'
