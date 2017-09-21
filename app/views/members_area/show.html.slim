@@ -30,7 +30,7 @@
 
   .row.mb--2
     - if policy(:video).index?
-      .col-xs-8.text-center
+      .col-sm-8.text-center
         h2.heading--underline Latest videos
         .row
           - @latest_videos.each do |video|
@@ -38,7 +38,7 @@
               = render 'videos/info_box', video: video
         p = link_to 'See more', videos_path
     - if policy(:magazine).index?
-      .col-xs-4.text-center
+      .col-sm-4.text-center
         h2.heading--underline Latest magazine issues
         .row
           - @latest_magazines.each do |magazine|
