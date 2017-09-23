@@ -2,11 +2,10 @@ class DanceClass < ApplicationRecord
   STYLE_OPTIONS = ['Egyptian Belly Dance', 'Fusion', 'Turkish Belly Dance', 'Tribal ATS', 'Gothic Belly Dance',
                    'Tribal Fusion', 'Folkloric', 'Gulf', 'Iraqi', 'Gypsy'].freeze
   LEVEL_OPTIONS = ['Open level', 'Beginner', 'Intermediate', 'Advanced'].freeze
-  DISTANCE_OPTIONS = [['Within 5 miles', 5],
-                      ['Within 10 miles', 10],
+  DISTANCE_OPTIONS = [['Within 50 miles', 50],
                       ['Within 25 miles', 25],
-                      ['Within 50 miles', 50],
-                      ['Within 100 miles', 100]].freeze
+                      ['Within 10 miles', 10],
+                      ['Within 5 miles', 5]].freeze
 
   include PgSearch
   pg_search_scope :search,

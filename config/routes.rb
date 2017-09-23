@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'classes' => 'classes#index'
   get 'classes/markers' => 'classes#markers'
   post 'classes/markers' => 'classes#markers'
-  get 'class/:id' => 'classes#show'
+  get 'class/:id' => 'classes#show', as: 'class'
   get 'events' => 'events#index'
 
   get 'subscription/one_off' => 'subscriptions#one_off', as: 'one_off_subscription'

@@ -7,20 +7,12 @@ class ClassesController < ApplicationController
     dance_classes = dance_classes.near("#{params[:location]}, United Kingdom", params[:distance]) if params[:location].present?
     dance_classes = dance_classes.where(style: params[:style]) if params[:style].present?
     dance_classes = dance_classes.search(params[:teacher_name]) if params[:teacher_name].present?
-    dance_classes = dance_classes.page(params[:page]).per(8)
     class_markers = Gmaps4rails.build_markers(dance_classes) do |dance_class, marker|
       marker.lat dance_class.latitude
       marker.lng dance_class.longitude
-      marker.infowindow dance_class.name
-      marker.title dance_class.name
-      marker.json({ id: dance_class.id,
-                    style: dance_class.style,
-                    level: dance_class.level,
-                    description: dance_class.description,
-                    teacher_name: dance_class.user.name })
+      marker.infowindow "<a href='#{class_path(dance_class)}'><h3>#{dance_class.name}</h3>More info</a>"
     end
-    render json: { markers: class_markers.as_json,
-                   meta: { next: dance_classes.next_page, prev: dance_classes.prev_page } }
+    render json: { markers: class_markers.as_json }
   end
 
   def show
