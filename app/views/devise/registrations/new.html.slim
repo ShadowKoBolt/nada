@@ -1,4 +1,25 @@
-h1.text-center Sign up
+h1.text-center Join
+
+.row
+  .col-xs-12.mb--4
+    p What do you get with your membership?
+    p A year's UK membership into our inspiring organisation for Arabic Dancers costs just 30 pounds and includes:
+
+    ul
+      li 3 magazines
+      li Your details listed in the magazines and on the NADA website (for teachers)
+      li Discounts on events across the UK
+      li Discounts on products from NADA friendly retailers
+      li Discounts on advertising your business in NADA magazine
+      li Your event details listed for FREE on our website
+      li The opportunity to contributo to NADA Magazine
+      li The opportunity to apply for our Sponsorship Funding Programmes to help your dance development.
+
+    p NADA is run by a dedicated team of volunteers who make up the NADA commitee. An AGM is held yearly to give members an opportunity to meet, dance and be updated on the committee's activities. The AGM venue is rotated to different areas of the country each year to help increase its accessibility to members.
+    p Join today and become part of something bigger!
+    p And for the dancer who already has everything NADA Membership makes a great gift!
+    p Its quick and easy to join NADA today!
+
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form" }) do |f|
   = devise_error_messages!
   h2 About you
@@ -13,7 +34,7 @@ h1.text-center Sign up
       .form-group
         = f.label :phone
         = f.text_field :phone, class: 'form-control'
-  .row.mb--4
+  .row
     .col-sm-6
       .form-group
         = f.label :first_name
@@ -22,7 +43,7 @@ h1.text-center Sign up
       .form-group
         = f.label :last_name
         = f.text_field :last_name, class: 'form-control'
-  .row
+  .row.mb--4
     .col-sm-6
       .form-group
         = f.label :password do
