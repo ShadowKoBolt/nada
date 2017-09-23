@@ -14,9 +14,8 @@ class User < ApplicationRecord
 
   class << self
     def to_csv
-      attributes = User.new.attributes.keys
-      attributes.delete(:encrypted_password)
-      attributes.delete(:reset_password_token)
+      rejected_keys = %w[encrypted_password reset_password_token reset_password_sent_at remember_created_at]
+      attributes = User.new.attributes.keys.reject { |key| key.in? rejected_keys }
 
       CSV.generate(headers: true) do |csv|
         csv << attributes

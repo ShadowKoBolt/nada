@@ -8,6 +8,7 @@ class Admin::UsersController < Admin::BaseController
 
   def download
     @users = User.all
+    @users = @users.where(teacher: true) if params[:teachers]
     send_data @users.to_csv, filename: "users-#{Date.today}.csv"
   end
 
