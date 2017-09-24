@@ -17,4 +17,8 @@ class ApplicationPolicy
   def user_renewal_date_is_past?
     @user && @user.renewal_date && @user.renewal_date < Date.today
   end
+
+  def user_renewal_date_is_near?
+    @user && @user.renewal_date && (@user.renewal_date - 1.month) < Date.today
+  end
 end

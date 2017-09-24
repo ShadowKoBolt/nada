@@ -1,18 +1,20 @@
 .container
-  .row.mb--4
-    .col-xs-12
-      h1.text-center Welcome to our members area!
-      p Here you will have access to tutorial videos from top UK teachers, copies of old issues for you to download and read on your kindle or phone and finally a place to list your classes & events.
-      p Make sure you make the most of this members area - all the features within it are exclusive to NADA members ONLY. So, prepare a cuppa, have a browse and if you have any questions please contact our team.
-      p
-        i Happy dancing!
+  h1.text-center Welcome to our members area!
 
-  - if policy(:application).user_renewal_date_is_nil? || policy(:application).user_renewal_date_is_past?
-    .well
+  - if policy(:application).user_renewal_date_is_nil? \
+    || policy(:application).user_renewal_date_is_past? \
+    || policy(:application).user_renewal_date_is_near?
+    .well.mb--4
       .row.mb--2
         .col-xs-12
-          | Your membership is not currently active.  In order to get access to all the premium content please renew your
-          |  membership now.  There are a couple of ways you can do this:
+          - if policy(:application).user_renewal_date_is_near?
+            | Your membership period is almost over (your final date is #{l current_user.renewal_date}).  In order to
+            |  continue to access get access all
+            |  the premium content please renew your membership when you get a moment.  There are a couple of ways you
+            |  can do this:
+          - else
+            | Your membership is not currently active.  In order to get access to all the premium content please renew your
+            |  membership now.  There are a couple of ways you can do this:
       .row
         .col-sm-6.text-center
           = link_to 'Start recurring membership', new_subscription_path, class: 'btn btn-primary mb--2'
@@ -30,6 +32,14 @@
               | Make a one off payment.  Once we verify the payment we will give you access to the premium content on
               |  site.  You will need to make another payment when your membership is due to renewal - but don't worry -
               |  we will send you out a reminder.
+
+  .row.mb--4
+    .col-xs-12
+      p Here you will have access to tutorial videos from top UK teachers, copies of old issues for you to download and read on your kindle or phone and finally a place to list your classes & events.
+      p Make sure you make the most of this members area - all the features within it are exclusive to NADA members ONLY. So, prepare a cuppa, have a browse and if you have any questions please contact our team.
+      p
+        i Happy dancing!
+
 
   .row.mb--2
     - if policy(:video).index?
