@@ -110,4 +110,6 @@ Rails.application.configure do
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  config.action_controller.forgery_protection_origin_check = false
 end
