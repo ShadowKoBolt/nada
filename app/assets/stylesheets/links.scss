@@ -1,3 +1,7 @@
 a {
   color: $gray-dark;
 }
+
+a.link__obvious {
+  text-decoration: underline;
+}
