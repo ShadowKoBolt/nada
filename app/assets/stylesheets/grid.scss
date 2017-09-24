@@ -30,3 +30,9 @@ $grid-base-unit: 10px;
     padding-right: $i * $grid-base-unit;
   }
 }
+
+.col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}

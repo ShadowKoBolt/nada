@@ -5,12 +5,14 @@
 
 - if @ungrouped_team_members.any?
   .row.mb--4
-    - @ungrouped_team_members.each do |team_member|
-      = render 'about/team_member', team_member: team_member
+    - @ungrouped_team_members.in_groups_of(4) do |group|
+      - group.each do |team_member|
+        = render('about/team_member', team_member: team_member, offset_class: offset_class(group, 4)) unless team_member.nil?
 
 - @teams.each do |team|
   - if team.team_members.any?
     h2.text-center = team.name
     .row.mb--4
-      - team.team_members.each do |team_member|
-        = render 'about/team_member', team_member: team_member
+      - team.team_members.in_groups_of(4) do |group|
+        - group.each do |team_member|
+          = render('about/team_member', team_member: team_member, offset_class: offset_class(group, 4)) unless team_member.nil?

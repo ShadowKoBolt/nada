@@ -1,4 +1,4 @@
-.col-sm-3
+div class="col-sm-3 #{offset_class} mb--2"
   = content_tag(*team_member_content_tag_attributes(team_member)) do
     = image_tag team_member.image.url(:thumb), alt: team_member.name, title: team_member.image_credit, class: 'team-member-image'
     .team-member-name = team_member.name
