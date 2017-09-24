@@ -41,3 +41,7 @@ en:
         teacher: "This member is a teacher"
         teacher_email: "Email for contact about teaching"
         teacher_phone: "Phone number for contact about teaching"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
