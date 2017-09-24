@@ -1,5 +1,5 @@
 .text-center
-  h1 Start a new subscription
+  h1 Start a recurring membership
 
   =  form_for @subscription, url: show_confirmation_subscription_path, method: :get do |f|
     = render 'layouts/errors', errors: f.object.errors.full_messages

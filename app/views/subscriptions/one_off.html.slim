@@ -1,0 +1,34 @@
+h1.text-center Its quick and easy to join NADA today!
+
+.alert.alert-info.text-center.hide#paypal-success
+  | Thank you - your payment has been received.
+  |   Your membership will be active in a few days once we have confirmed your payment.
+
+p To pay by PayPal you can use the links below:
+
+.row.mb--4
+  .col-sm-6.text-center
+    h4 NADA UK Membership
+    p £30.00
+    #paypal-button-uk
+  .col-sm-6.text-center
+    h4 NADA International Membership
+    p £40.00
+    #paypal-button-international
+
+p You can also pay by cheque (mada payable to NADA) by filling in a membership form and returning it with your cheque to:
+
+p.mb--4
+  | NADA Membership
+  br
+  | Trish Marriott
+  br
+  | 15 Faircross
+  br
+  | Bracknell
+  br
+  | RG12 7AP
+
+p You will receive your first magazine when the next edition is due out. Once your application has been processed you will receive confirmation by email. If paying by cheque this can take up to 2 weeks.
+
+p If you would like to pay by BACS please check our <a class='link__obvious' href="#{new_subscription_path}">subscription payments option</a> or email #{mail_to 'membership@nadadance.co.uk', 'membership@nadadance.co.uk', class: 'link__obvious'} for payment details.

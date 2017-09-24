@@ -87,7 +87,7 @@ h1.text-center Sign up
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
 
   - if @user.stripe_subscriptions.any?
-    h2 Subscription info
+    h2 Recurring membership info
     - @user.stripe_subscriptions.each do |subscription|
       .well
         p

@@ -11,22 +11,25 @@
     .well
       .row.mb--2
         .col-xs-12
-          | Your subscription is not currently active.  In order to get access to all the premium content please renew your
-          | subscription now.  There are a couple of ways you can do this:
+          | Your membership is not currently active.  In order to get access to all the premium content please renew your
+          |  membership now.  There are a couple of ways you can do this:
       .row
         .col-sm-6.text-center
-          = link_to 'Start a subscription', new_subscription_path, class: 'btn btn-primary mb--2'
+          = link_to 'Start recurring membership', new_subscription_path, class: 'btn btn-primary mb--2'
           p
             small
-              | This way you can gain access to all the premium content instantly and don't have to worry about renewing
-              | your membership - we will take care of it automatically but you can cancel at any time.
+              | This way you can gain
+              strong  access to all the premium content instantly
+              |  and don't have to worry about renewing
+              | your membership - we will take care of it automatically but you can
+              strong  cancel at any time.
         .col-sm-6.text-center
           = link_to 'Make a one off payment', one_off_subscription_path, class: 'btn btn-primary mb--2'
           p
             small
               | Make a one off payment.  Once we verify the payment we will give you access to the premium content on
-              | site.  You will need to make another payment when your membership is due to renewal - but don't worry -
-              | we will send you out a reminder.
+              |  site.  You will need to make another payment when your membership is due to renewal - but don't worry -
+              |  we will send you out a reminder.
 
   .row.mb--2
     - if policy(:video).index?
