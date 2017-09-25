@@ -34,6 +34,8 @@ class User < ApplicationRecord
   def stripe_customer
     return nil unless stripe_customer_id?
     @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
+  rescue Stripe::InvalidRequestError
+    nil
   end
 
   def stripe_subscriptions
