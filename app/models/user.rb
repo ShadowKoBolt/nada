@@ -25,6 +25,10 @@ class User < ApplicationRecord
         end
       end
     end
+
+    def status_filter_options
+      [['Any status', nil], ['Lapsed (renewal date in past)', 'lapsed'], ['Active (renewal date in future)', 'active']]
+    end
   end
 
   def name

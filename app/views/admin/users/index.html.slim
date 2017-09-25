@@ -2,36 +2,47 @@ h1 Users
 
 .well.mb--4
   .row
-    .col-sm-6
+    .col-sm-3
       => link_to 'Add user', new_admin_user_path, class: 'btn btn-success'
-    .col-sm-6.text-right
+    .col-sm-9.text-right.mb--1
       = form_tag admin_users_path, method: :get, class: 'form form-inline' do
-        = text_field_tag :term, params[:term], class: 'form-control'
+        => select_tag :status, options_for_select(User.status_filter_options, params[:status]),
+          class: 'form-control'
+        = text_field_tag :term, params[:term], class: 'form-control', placeholder: 'Search'
         = submit_tag 'Search', class: 'btn btn-primary'
-        - if params[:term].present?
+        - if params[:term].present? || params[:status].present?
           small
             = link_to 'Clear', admin_users_path, class: 'text-danger'
   .row.mb--1
     .col-xs-12
-      => link_to 'Download Users', download_admin_users_path, class: 'btn btn-info'
+      => link_to 'Download Users', download_admin_users_path(status: params[:status], term: params[:term]), class: 'btn btn-info'
       = link_to 'Download Teachers', download_admin_users_path(teachers: true), class: 'btn btn-info'
   .row
     .col-xs-12
-      = text_field_tag :email, User.all.pluck(:email).join(', '), class: 'form-control'
+      = text_field_tag :email, @users.pluck(:email).join(', '), class: 'form-control'
 table.table
   thead
     tr
       th = User.human_attribute_name(:email)
       th = User.human_attribute_name(:name)
       th = User.human_attribute_name(:teacher)
+      th = User.human_attribute_name(:renewal_date)
       th
   tbody data-js-sortable=reorder_admin_videos_path
     - @users.each do |user|
       tr
         td = mail_to user.email
         td = user.name
-        td = user.teacher ? 'Yes' : 'No'
-        td.text-right
+        td == user.teacher ? '<span class="text-success">Yes</span>' : '<span class="text-danger">No</span>'
+        td
+          - if user.renewal_date?
+            - if ApplicationPolicy.new(user, nil).user_renewal_date_is_in_future?
+              span.text-success = l user.renewal_date
+            - else
+              span.text-danger = l user.renewal_date
+          - else
+            | Unknown
+        td.text-right style='min-width: 220px;'
           .btn-group
             = link_to 'Classes', admin_user_dance_classes_path(user), class: 'btn btn-xs btn-primary' if user.teacher
             = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-xs btn-warning'

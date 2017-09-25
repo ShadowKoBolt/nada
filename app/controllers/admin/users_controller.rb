@@ -4,10 +4,15 @@ class Admin::UsersController < Admin::BaseController
   def index
     @users = User.all
     @users = @users.search(params[:term]) if params[:term].present?
+    @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
+    @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
   end
 
   def download
     @users = User.all
+    @users = @users.search(params[:term]) if params[:term].present?
+    @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
+    @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
     @users = @users.where(teacher: true) if params[:teachers]
     send_data @users.to_csv, filename: "users-#{Date.today}.csv"
   end
