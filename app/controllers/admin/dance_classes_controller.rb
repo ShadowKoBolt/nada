@@ -47,7 +47,7 @@ module Admin
 
     def dance_class_params
       params.require(:dance_class).permit(:name, :level, :style, :address_1, :address_2, :address_3,
-                                          :city, :region, :postcode, :description)
+                                          :city, :region, :postcode, :description, :latitude, :longitude)
     end
   end
 end

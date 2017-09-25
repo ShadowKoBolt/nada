@@ -15,9 +15,9 @@ class DanceClass < ApplicationRecord
   belongs_to :user
 
   geocoded_by :full_street_address
-  after_validation :geocode
+  before_validation :geocode
 
-  validates :name, :address_1, :postcode, presence: true
+  validates :name, :address_1, :postcode, :latitude, :longitude, presence: true
 
   def full_street_address
     [address_1, address_2, address_3, city, region, postcode, 'United Kingdom'].reject(&:blank?).join(', ')

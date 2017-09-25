@@ -43,6 +43,18 @@
         = f.text_field :postcode, class: 'form-control'
   .row
     .col-xs-12
+      .help-block If lat and long cannot be found use #{link_to 'this website', 'https://www.latlong.net/'} to find them and enter directly.
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :latitude
+        = f.text_field :latitude, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :longitude
+        = f.text_field :longitude, class: 'form-control'
+  .row
+    .col-xs-12
       .form-group
         = f.label :description
         = f.text_area :description, class: 'form-control', data: { js_wysiwyg: true }
