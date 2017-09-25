@@ -55,6 +55,12 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path, notice: 'User removed'
   end
 
+  def renew_success
+    @user = User.find(params[:id])
+    ApplicationMailer.renew_success(@user.id).deliver
+    redirect_to edit_admin_user_path(@user), notice: 'Email send'
+  end
+
   private
 
   def user_params

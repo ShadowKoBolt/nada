@@ -1,0 +1,34 @@
+<div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Hi <%= @user.first_name.present? ? @user.first_name : @user.email %>
+  </p>
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Thanks for renewing your membership of NADA.
+  </p>
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Your membership will expire on <%= l @user.renewal_date %>  and a reminder will be issued before that date.
+  </p>
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Please check that your name and address are correct and the other details held (as below) – if anything is incorrect, or changes, you can log into your account to update it or just let us know.
+  </p>
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Email address: <%= @user.email %>
+    <br />
+    Address: <%= @user.full_street_address %>
+  </p>
+
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    If you have told me about details of classes these will be included in the next issue of the magazine.
+  </p>
+
+  <p style="margin: 0;font-size: 14px;line-height: 17px; text-align: center; margin-bottom:20px;">
+    Happy dancing,
+    </br>
+    The NADA team
+  </p>
+</div>

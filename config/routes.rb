@@ -53,6 +53,9 @@ Rails.application.routes.draw do
       collection do
         get :download
       end
+      member do
+        post :renew_success
+      end
     end
   end
 end

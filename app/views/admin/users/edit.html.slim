@@ -1,3 +1,13 @@
 h1.text-center Edit user
 
 = render 'form'
+
+.row
+  .col-xs-12.text-center
+    = button_to 'Send renewal success email',
+      renew_success_admin_user_path(@user),
+      method: :post,
+      class: 'btn btn-success',
+      data: { confirm: 'Are you sure you want to send this email?' },
+      disabled: !ApplicationPolicy.new(@user, nil).user_renewal_date_is_in_future?,
+      title: ("This user's renewal date is in the past" unless ApplicationPolicy.new(@user, nil).user_renewal_date_is_in_future?)

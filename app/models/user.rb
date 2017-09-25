@@ -56,6 +56,10 @@ class User < ApplicationRecord
     country == 'GB' ? ENV['STRIPE_PLAN_NAME_UK'] : ENV['STRIPE_PLAN_NAME_INTERNATIONAL']
   end
 
+  def full_street_address
+    [address_line_1, address_line_2, address_line_3, city, region, postcode, country].reject(&:blank?).join(', ')
+  end
+
   class AdminForm < Reform::Form
     model :user
     properties :email, :phone, :first_name, :last_name,
