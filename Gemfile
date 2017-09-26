@@ -35,6 +35,8 @@ gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 gem 'yt'
 gem 'yt-url'
+gem 'newrelic_rpm'
+
 
 group :development, :test do
   gem 'pry-rails'
