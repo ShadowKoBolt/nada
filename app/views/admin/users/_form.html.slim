@@ -10,6 +10,18 @@
       .form-group
         = f.label :phone
         = f.text_field :phone, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :password do
+          = User.human_attribute_name(:password)
+          small Leave blank if you do not want to change
+        = f.password_field :password, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :password_confirmation do
+          = User.human_attribute_name(:password_confirmation)
+          small Leave blank if you do not want to change
+        = f.password_field :password_confirmation, class: 'form-control'
   .row
     .col-sm-6
       .form-group

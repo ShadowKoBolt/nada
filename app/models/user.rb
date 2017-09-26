@@ -66,9 +66,11 @@ class User < ApplicationRecord
                :address_line_1, :address_line_2, :address_line_3,
                :city, :region, :postcode, :country, :notes, :teacher,
                :teacher_email, :teacher_phone, :teaching_locations, :join_date,
-               :renewal_date, :status, :admin
+               :renewal_date, :status, :admin, :password, :password_confirmation
 
     validates :email, :address_line_1, :postcode, :country, presence: true
+    validates :password, :password_confirmation, presence: true, allow_blank: true
+    validates :password, length: { minimum: 6, if: proc { password.present? } }
 
     def save
       model.password = SecureRandom.hex if model.new_record?
