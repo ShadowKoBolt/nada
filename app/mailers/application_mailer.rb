@@ -7,6 +7,11 @@ class ApplicationMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Your NADA membership runs out soon')
   end
 
+  def renew_2(user_id)
+    @user = User.find(user_id)
+    mail(to: @user.email, subject: 'Your NADA membership runs out soon')
+  end
+
   def renew_success(user_id)
     @user = User.find(user_id)
     mail(to: @user.email, subject: 'Your NADA membership has been renewed')
