@@ -2,7 +2,7 @@ require 'csv'
 
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.all
+    @users = User.order(:first_name, :last_name, :email)
     @users = @users.search(params[:term]) if params[:term].present?
     @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
     @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
