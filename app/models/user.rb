@@ -73,7 +73,7 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6, if: proc { password.present? } }
 
     def save
-      model.password = SecureRandom.hex if model.new_record?
+      self.password = SecureRandom.hex if model.new_record?
       super
     end
   end

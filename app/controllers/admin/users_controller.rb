@@ -25,8 +25,7 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new
     @user = User::AdminForm.new(@user)
-    if @user.validate(user_params)
-      @user.save
+    if @user.validate(user_params) && @user.save
       redirect_to admin_users_path, notice: 'User created'
     else
       render action: :new
