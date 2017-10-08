@@ -4,14 +4,17 @@ module Admin
 
     def index
       @dance_classes = @user.dance_classes
+      authorize @dance_class
     end
 
     def new
       @dance_class = @user.dance_classes.build
+      authorize @dance_class
     end
 
     def create
       @dance_class = @user.dance_classes.build(dance_class_params)
+      authorize @dance_class
       if @dance_class.save
         redirect_to admin_user_dance_classes_path(@user), notice: 'Dance class created'
       else
@@ -21,10 +24,12 @@ module Admin
 
     def edit
       @dance_class = @user.dance_classes.find(params[:id])
+      authorize @dance_class
     end
 
     def update
       @dance_class = @user.dance_classes.find(params[:id])
+      authorize @dance_class
       if @dance_class.update(dance_class_params)
         redirect_to admin_user_dance_classes_path(@user), notice: 'Dance class updated'
       else
@@ -35,6 +40,7 @@ module Admin
 
     def destroy
       dance_class = @user.dance_classes.find(params[:id])
+      authorize @dance_class
       dance_class.destroy
       redirect_to admin_user_dance_classes_path(@user), notice: 'Dance class removed'
     end

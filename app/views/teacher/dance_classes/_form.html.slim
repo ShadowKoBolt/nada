@@ -1,0 +1,66 @@
+= form_for [:teacher, @dance_class], html: { class: 'form' } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .row
+    .col-xs-12
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', autofocus: true
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :level
+        = f.select :level, DanceClass::LEVEL_OPTIONS, {}, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :style
+        = f.select :style, DanceClass::STYLE_OPTIONS, { include_blank: 'Other' }, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :address_1
+        = f.text_field :address_1, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :address_2
+        = f.text_field :address_2, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :address_3
+        = f.text_field :address_3, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :city
+        = f.text_field :city, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :region
+        = f.text_field :region, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :postcode
+        = f.text_field :postcode, class: 'form-control'
+  .row
+    .col-xs-12.mb--2
+      = link_to 'Enter latitude and longitude directly', '#', data: { js_toggle: '[data-js-id="lat-lon"]' }
+  div data-js-id='lat-lon' class=('hide' unless @dance_class.errors.has_key?(:latitude))
+    .row
+      .col-xs-12
+        .help-block If lat and long cannot be found use #{link_to 'this website', 'https://www.latlong.net/'} to find them and enter directly.
+    .row
+      .col-sm-6
+        .form-group
+          = f.label :latitude
+          = f.text_field :latitude, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = f.label :longitude
+          = f.text_field :longitude, class: 'form-control'
+  .row
+    .col-xs-12
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', data: { js_wysiwyg: true }
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   post 'subscription/create' => 'subscriptions#create', as: 'create_subscription'
 
+  namespace :teacher do
+    resources :dance_classes, except: [:show]
+  end
+
   namespace :admin do
     resources :videos, except: [:show] do
       collection do
