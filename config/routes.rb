@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   post 'subscription/create' => 'subscriptions#create', as: 'create_subscription'
 
+  post 'subscription/one_off/add_promo' => 'subscriptions#find_promo', as: 'find_promo'
+
   namespace :admin do
     resources :videos, except: [:show] do
       collection do
@@ -48,6 +50,7 @@ Rails.application.routes.draw do
         post :reorder
       end
     end
+    resources :discounts, except: [:show]
     resources :users, except: [:show] do
       resources :dance_classes, except: [:show]
       collection do

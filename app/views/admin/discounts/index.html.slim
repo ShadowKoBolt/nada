@@ -1,0 +1,25 @@
+h1 Discounts
+
+.well.mb--4
+  = link_to 'Add discount', new_admin_discount_path, class: 'btn btn-success'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th = Discount.human_attribute_name(:code)
+      th = Discount.human_attribute_name(:discount)
+      th = Discount.human_attribute_name(:start_date)
+      th = Discount.human_attribute_name(:end_date)
+      th style="min-width: 140px;"
+  tbody
+    - @discounts.each do |discount|
+      tr
+        td = discount.code
+        td = Money.new(discount.discount, Discount::CURRENCY_CODE).format
+        td = l discount.start_date
+        td = l discount.end_date
+        td.text-right
+          .btn-group
+            = link_to 'Edit', edit_admin_discount_path(discount), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', admin_discount_path(discount), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this discount?' }

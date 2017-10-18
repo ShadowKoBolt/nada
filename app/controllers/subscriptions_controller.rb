@@ -37,6 +37,16 @@ class SubscriptionsController < BaseController
     end
   end
 
+  def find_promo
+    @discount = Discount.active.where(code: params[:code]).first
+    if @discount
+      flash.now[:notice] = 'Discount added'
+    else
+      flash.now[:alert] = 'Unable to find valid code'
+    end
+    render action: :one_off
+  end
+
   private
 
   def show_confirm_params

@@ -30,6 +30,7 @@ html
               = link_to 'Users', admin_users_path, class: "list-group-item #{'active' if controller_name.in? %w[users dance_classes]}"
               = link_to 'Team members', admin_team_members_path,
                 class: "list-group-item #{'active' if controller_name.in? %w{team_members teams} }"
+              = link_to 'Discounts', admin_discounts_path, class: "list-group-item #{'active' if controller_name == 'discounts'}"
           .col-sm-10
             = yield
     = render 'layouts/footer'

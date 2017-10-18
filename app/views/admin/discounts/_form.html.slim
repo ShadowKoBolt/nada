@@ -1,0 +1,16 @@
+= form_for [:admin, @discount], html: { class: 'form' } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :code
+    = f.text_field :code, class: 'form-control'
+  .form-group
+    = f.label :discount_pounds
+    = f.text_field :discount_pounds, class: 'form-control', type: 'number', step: '0.01', min: '0'
+  .form-group
+    = f.label :start_date
+    = f.text_field :start_date, class: 'form-control', type: 'date'
+  .form-group
+    = f.label :end_date
+    = f.text_field :end_date, class: 'form-control', type: 'date'
+  .actions
+    = f.submit nil, class: 'btn btn-primary'
