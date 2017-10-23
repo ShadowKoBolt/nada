@@ -158,7 +158,7 @@ $(document).ready(function() {
 
   // PayPal
   if ($('#paypal-button-uk').length > 0) {
-    var price = $('#paypal-button-uk').data('price');
+    var priceUK = $('#paypal-button-uk').data('price');
     paypal.Button.render({
       env: 'production', // 'production' or 'sandbox'
       client: {
@@ -171,7 +171,7 @@ $(document).ready(function() {
           payment: {
             transactions: [
               {
-                amount: { total: price, currency: 'GBP' }
+                amount: { total: priceUK, currency: 'GBP' }
               }
             ]
           }
@@ -186,7 +186,7 @@ $(document).ready(function() {
   }
 
   if ($('#paypal-button-international').length > 0) {
-    var price = $('#paypal-button-international').data('price');
+    var priceInternational = $('#paypal-button-international').data('price');
     paypal.Button.render({
       env: 'production', // 'production' or 'sandbox'
       client: {
@@ -199,7 +199,7 @@ $(document).ready(function() {
           payment: {
             transactions: [
               {
-                amount: { total: price, currency: 'GBP' }
+                amount: { total: priceInternational, currency: 'GBP' }
               }
             ]
           }
