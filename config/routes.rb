@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post 'classes/markers' => 'classes#markers'
   get 'class/:id' => 'classes#show', as: 'class'
   get 'events' => 'events#index'
+  get 'event/:id' => 'events#show', as: 'event'
 
   get 'subscription/one_off' => 'subscriptions#one_off', as: 'one_off_subscription'
   get 'subscription/new' => 'subscriptions#new', as: 'new_subscription'
@@ -58,6 +59,14 @@ Rails.application.routes.draw do
       end
       member do
         post :renew_success
+      end
+    end
+    resources :events, except: [:show] do
+      collection do
+        post :reorder
+      end
+      member do
+        post :feature
       end
     end
   end

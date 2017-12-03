@@ -71,9 +71,13 @@ class User < ApplicationRecord
     validates :email, :address_line_1, :postcode, :country, presence: true
     validates :password, :password_confirmation, presence: true, allow_blank: true
     validates :password, length: { minimum: 6, if: proc { password.present? } }
+    validates :password, confirmation: { if: proc { password.present? } }
+    validates_uniqueness_of :email
 
     def save
-      self.password = SecureRandom.hex if model.new_record?
+      if model.new_record? && password.blank? && password_confirmation.blank?
+        self.password = SecureRandom.hex
+      end
       super
     end
   end

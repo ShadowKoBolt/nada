@@ -1,0 +1,36 @@
+h1 Events
+
+.well.mb--4
+  = link_to 'Add event', new_admin_event_path, class: 'btn btn-success'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th Sort
+      th = Event.human_attribute_name(:name)
+      th = Event.human_attribute_name(:published)
+      th = Event.human_attribute_name(:featured)
+      th style="min-width: 140px;"
+  tbody data-js-sortable=reorder_admin_events_path
+    - @events.each do |event|
+      tr id="event-#{event.id}"
+        td data-js-sortable-handle=true
+          = image_tag event.image.url(:thumb), class: 'thumbnail__admin'
+        td = event.name
+        td class=(event.published? ? 'text-success' : 'text-danger')
+          = event.published_human
+        td
+          - if event.featured?
+            span.btn.btn-xs.btn-success Currently featured
+          - else
+            = button_to 'Feature',
+                        feature_admin_event_path(event),
+                        class: 'btn btn-xs btn-warning'
+        td.text-right
+          .btn-group
+            = link_to (event.published ? 'View' : 'Preview'),
+                      event_path(event),
+                      class: 'btn btn-xs btn-info'
+            = link_to 'Edit', edit_admin_event_path(event), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', admin_event_path(event), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this event?' }

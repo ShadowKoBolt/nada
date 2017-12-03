@@ -45,3 +45,4 @@ en:
   date:
     formats:
       default: "%d/%m/%Y"
+      short: "%-d %b %y"

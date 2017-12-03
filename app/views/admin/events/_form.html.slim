@@ -1,0 +1,60 @@
+= form_for [:admin, @event], html: { class: 'form', multipart: true } do |f|
+  = render 'layouts/errors', errors: f.object.errors.full_messages
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', autofocus: true
+
+  .form-group
+    = f.label :image
+    - if f.object.image.present?
+      p.help
+        | Current image:
+        =< link_to f.object.image_file_name,
+                   f.object.image.url,
+                   target: '_blank'
+    = f.file_field :image, class: 'form-control'
+
+  .row
+    .col-sm-3
+      .form-group
+        = f.label :date do
+          = Event.human_attribute_name(:date)
+          small Optional
+        = f.text_field :date, class: 'form-control', type: 'date'
+
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :location do
+          = Event.human_attribute_name(:location)
+          small Optional
+        = f.text_field :location, class: 'form-control'
+
+  .form-group
+    = f.label :google_map_embed_code do
+      = Event.human_attribute_name :google_map_embed_code
+      small Optional
+    p.help iframe snipped from google maps for the event location
+    = f.text_area :google_map_embed_code, class: 'form-control'
+
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :facebook_url do
+          = Event.human_attribute_name(:facebook_url)
+          small Optional
+        = f.text_field :facebook_url,
+                      class: 'form-control',
+                      placeholder: 'http://www.facebook.com/events/123'
+
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control', data: { js_wysiwyg: true }
+
+  .checkbox
+    label
+      = f.check_box :published
+      = Event.human_attribute_name(:published)
+
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

@@ -20,7 +20,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
+gem 'meta-tags'
 gem 'money'
+gem 'newrelic_rpm'
 gem 'paperclip', '~> 5.0.0'
 gem 'pg', '~> 0.18'
 gem 'pg_search'
@@ -35,8 +37,6 @@ gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 gem 'yt'
 gem 'yt-url'
-gem 'newrelic_rpm'
-
 
 group :development, :test do
   gem 'pry-rails'

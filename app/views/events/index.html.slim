@@ -1,4 +1,11 @@
 .text-center
   h1 Events
-  .alert.alert-info Coming soon!
+
+.row
+ - @events.each do |event|
+  .col-sm-6.text-center
+    = image_tag event.image.url, alt: event.name, class: 'img img-responsive mb--3'
+    h2 = event.name
+    p = event.first_paragraph
+    p = link_to 'More info', event_path(event), class: 'btn btn-info'
 

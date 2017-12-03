@@ -1,0 +1,24 @@
+= content_for :post_header do
+  .full-width-image__background
+    = image_tag @event.image.url, alt: @event.name, class: 'img img-responsive img-center'
+
+- unless @event.published?
+  .alert.alert-danger.text-center
+    | You are currently previewing this event.
+    |   It is only visible logged in admins.
+
+.long-body
+  h1.text-center = title @event.name
+
+  - if @event.facebook_url
+    .text-center.mb--4
+      = link_to @event.facebook_url, class: 'event--facebook-link' do
+        = image_tag 'icons/facebook-inverse.svg', alt: 'Facebook'
+        | See this event on facebook
+
+  == @event.body
+
+- if @event.google_map_embed_code?
+  = content_for :pre_footer do
+    == @event.google_map_embed_code_iframe
+

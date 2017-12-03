@@ -3,7 +3,6 @@
 
 .row
   .col-sm-8
-
     h1.h3 NADA membership includes:
 
     p
@@ -22,27 +21,27 @@
         li A community to discuss dance and meet other dancers in the UK dance scene.
 
   .col-sm-4.pt--2
+    - featured_event = Event.where(featured: true, published: true).first
 
-    a.info-box.mb--3 href="https://jwaadtraining.uk/fantasia-festival"
-      .info-box--top
-        .info-box--eye-catch-container
-          .info-box--eye-catch__left Sponsored
-          .info-box--eye-catch 9th Dec
-        .info-box--tag-container
-          .info-box--tag London
-      .info-box--bottom
-        .info-box--heading Fantasia Festival
-        .info-box--body
-          p
-            | A new contemporary UK belly dance festival
-            br
-            | Inspiring teachers
-            br
-            | Fabulous dancing
-            br
-            | Exclusing shopping
+    - if featured_event
+      a.info-box.mb--3 href=event_path(featured_event)
+        .info-box--top
+          = image_tag featured_event.image.url(:featured),
+                      alt: featured_event.name,
+                      class: 'img img-responsive'
+          .info-box--eye-catch-container
+            .info-box--eye-catch__left Featured
+            - if featured_event.date?
+              .info-box--eye-catch = l featured_event.date, format: :short
+          - if featured_event.location
+            .info-box--tag-container
+              .info-box--tag = featured_event.location
+        .info-box--bottom
+          .info-box--heading = featured_event.name
+          .info-box--body
+            p = featured_event.first_paragraph
 
     a.info-box href=events_path
       .info-box--bottom
-        .info-box--heading MORE EVENTS
+        .info-box--heading = featured_event ? 'MORE EVENTS' : 'EVENTS'
 

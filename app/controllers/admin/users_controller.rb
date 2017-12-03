@@ -67,9 +67,11 @@ class Admin::UsersController < Admin::BaseController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     params.require(:user).permit(:email, :phone, :first_name, :last_name,
-                                 :address_line_1, :address_line_2, :address_line_3,
-                                 :city, :region, :postcode, :country, :notes,
-                                 :teacher, :teacher_email, :teacher_phone, :teaching_locations,
-                                 :join_date, :renewal_date, :status, :admin, :password, :password_confirmation)
+                                 :address_line_1, :address_line_2,
+                                 :address_line_3, :city, :region, :postcode,
+                                 :country, :notes, :teacher, :teacher_email,
+                                 :teacher_phone, :teaching_locations,
+                                 :join_date, :renewal_date, :status, :admin,
+                                 :password, :password_confirmation)
   end
 end
