@@ -10,7 +10,7 @@
 .long-body
   h1.text-center = title @event.name
 
-  - if @event.facebook_url
+  - if @event.facebook_url?
     .text-center.mb--4
       = link_to @event.facebook_url, class: 'event--facebook-link' do
         = image_tag 'icons/facebook-inverse.svg', alt: 'Facebook'
