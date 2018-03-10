@@ -41,6 +41,9 @@ html
               = link_to 'Events',
                         admin_events_path,
                         class: "list-group-item #{'active' if controller_name == 'events'}"
+              = link_to 'Settings',
+                        edit_admin_setting_path,
+                        class: "list-group-item #{'active' if controller_name == 'settings'}"
           .col-sm-10
             = yield
     = render 'layouts/footer'

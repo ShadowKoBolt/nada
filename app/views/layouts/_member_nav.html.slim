@@ -9,6 +9,9 @@
         class: (controller_path == 'magazines' ? 'tab-nav--link__active' : 'tab-nav--link')
       = link_to 'My account', my_account_path,
         class: (controller_path == 'registrations' ? 'tab-nav--link__active' : 'tab-nav--link')
+      - if policy(:dance_class).index?
+        = link_to 'My classes', dance_classes_path,
+          class: (controller_path == 'dance_classes' ? 'tab-nav--link__active' : 'tab-nav--link')
       - if policy(:admin).show?
         = link_to 'Admin', admin_videos_path,
           class: (controller_path.include?('admin/') ? 'tab-nav--link__active' : 'tab-nav--link')

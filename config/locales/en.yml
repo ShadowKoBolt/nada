@@ -39,6 +39,7 @@ en:
       user:
         admin: "This member is an admin"
         teacher: "This member is a teacher"
+        teacher_me: "I am a teacher and would like to manage my classes"
         teacher_email: "Email for contact about teaching"
         teacher_phone: "Phone number for contact about teaching"
 

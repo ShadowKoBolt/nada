@@ -16,4 +16,20 @@ class ApplicationMailer < ActionMailer::Base
     @user = User.find(user_id)
     mail(to: @user.email, subject: 'Your NADA membership has been renewed')
   end
+
+  def dance_class_added(dance_class_id)
+    @dance_class = DanceClass.find(dance_class_id)
+    mail(
+      to: Setting.instance.dance_class_update_emails,
+      subject: "A dance class has been added",
+    )
+  end
+
+  def dance_class_edited(dance_class_id)
+    @dance_class = DanceClass.find(dance_class_id)
+    mail(
+      to: Setting.instance.dance_class_update_emails,
+      subject: "A dance class has been updated",
+    )
+  end
 end

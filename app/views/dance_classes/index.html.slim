@@ -1,0 +1,19 @@
+.well.mb--4
+  = link_to 'Add class', new_dance_class_path, class: 'btn btn-success'
+
+table.table.table--vertical-align-middle
+  thead
+    tr
+      th = DanceClass.human_attribute_name(:name)
+      th = DanceClass.human_attribute_name(:full_street_address)
+      th style="min-width: 140px;"
+  tbody
+    - @dance_classes.each do |dance_class|
+      tr
+        td = dance_class.name
+        td = dance_class.full_street_address
+        td.text-right
+          .btn-group
+            = link_to 'Edit', edit_dance_class_path(dance_class), class: 'btn btn-xs btn-warning'
+            = link_to 'Remove', dance_class_path(dance_class), class: 'btn btn-xs btn-danger', method: :delete,
+              data: { confirm: 'Are you sure you want to remove this dance class?' }

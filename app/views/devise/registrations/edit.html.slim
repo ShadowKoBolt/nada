@@ -1,4 +1,3 @@
-h1.text-center Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form" }) do |f|
   = devise_error_messages!
   h2 About you
@@ -77,6 +76,39 @@ h1.text-center Sign up
           | If you need to change the country you get your magazine sent to please contact us as it can result
           |  in price changes
         = f.country_select :country, { priority_countries: ['GB'] }, class: 'form-control', disabled: true
+
+  - if policy(:application).user_renewal_date_is_in_future?
+    .mb--4
+      h2 Teaching
+      .row
+        .col-xs-12
+          .form-group
+            .checkbox
+              = f.label :teacher do
+                = f.check_box :teacher, data: { js_reveals: '[data-js-teaching-fields]' }
+                = t("activerecord.attributes.user.teacher_me")
+      div data-js-teaching-fields=true
+        .row
+          .col-sm-6
+            .form-group
+              = f.label :teacher_email do
+                = User.human_attribute_name(:teacher_email)
+                small Optional
+              = f.email_field :teacher_email, class: 'form-control'
+          .col-sm-6
+            .form-group
+              = f.label :teacher_phone do
+                = User.human_attribute_name(:teacher_phone)
+                small Optional
+              = f.text_field :teacher_phone, class: 'form-control'
+        .row
+          .col-xs-12
+            .form-group
+              = f.label :teaching_locations do
+                = User.human_attribute_name(:teaching_locations)
+                small Name of the city or town where you teach or are based out of, feel free to enter multiple
+              = f.text_field :teaching_locations, class: 'form-control'
+
   .row.mb--4
     .col-xs-12
       .form-group

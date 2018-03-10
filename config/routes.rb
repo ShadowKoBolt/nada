@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   get 'class/:id' => 'classes#show', as: 'class'
   get 'events' => 'events#index'
   get 'event/:id' => 'events#show', as: 'event'
+  resources :dance_classes, except: [:show]
 
   get 'subscription/one_off' => 'subscriptions#one_off', as: 'one_off_subscription'
   get 'subscription/new' => 'subscriptions#new', as: 'new_subscription'
@@ -69,5 +72,6 @@ Rails.application.routes.draw do
         post :feature
       end
     end
+    resource :setting, only: [:edit, :update]
   end
 end

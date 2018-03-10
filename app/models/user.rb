@@ -107,7 +107,7 @@ class User < ApplicationRecord
     properties :email, :phone, :first_name, :last_name,
                :address_line_1, :address_line_2, :address_line_3,
                :city, :region, :postcode, :country, :password, :password_confirmation,
-               :stripe_subscriptions, :stripe_sources
+               :teacher, :teacher_email, :teacher_phone, :teaching_locations
     property :current_password, virtual: true
 
     validates :email, :address_line_1, :postcode, presence: true
@@ -116,6 +116,14 @@ class User < ApplicationRecord
     validate do
       errors.add(:password_confirmation, 'does not match password') if password != password_confirmation
       errors.add(:current_password, 'is incorrect.  We need to check your current password to ensure you are authorized to make changes.') unless model.valid_password?(current_password)
+    end
+
+    def stripe_subscriptions
+      model.stripe_subscriptions
+    end
+
+    def stripe_sources
+      model.stripe_sources
     end
 
     def save
