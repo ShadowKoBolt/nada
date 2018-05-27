@@ -13,3 +13,10 @@ task :renew_2 => :environment do
     ApplicationMailer.renew_2(user.id).deliver
   end
 end
+
+task :update_statuses => :environment do
+  User.find_each do |user|
+    status = user.determine_status
+    user.update(status: status)
+  end
+end

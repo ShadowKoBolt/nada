@@ -60,6 +60,12 @@ class User < ApplicationRecord
     [address_line_1, address_line_2, address_line_3, city, region, postcode, country].reject(&:blank?).join(', ')
   end
 
+  def determine_status
+    return "New" if renewal_date.nil?
+    return "Confirmed" if renewal_date > Date.today
+    "Lapsed"
+  end
+
   class AdminForm < Reform::Form
     model :user
     properties :email, :phone, :first_name, :last_name,
@@ -97,7 +103,7 @@ class User < ApplicationRecord
     end
 
     def save
-      model.status = 'New'
+      model.status = "New"
       super
     end
   end
@@ -127,7 +133,7 @@ class User < ApplicationRecord
     end
 
     def save
-      model.status = 'New'
+      model.status = "New"
       super
     end
   end
