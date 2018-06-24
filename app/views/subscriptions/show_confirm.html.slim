@@ -4,6 +4,7 @@
   =  form_for @subscription, url: create_subscription_path do |f|
     = f.hidden_field :promo_code
     = f.hidden_field :stripe_token
+    = f.hidden_field :plan_id
     = render 'layouts/errors', errors: f.object.errors.full_messages
     .row
       .col-sm-4.col-sm-offset-4

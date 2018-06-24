@@ -16,7 +16,8 @@ class Plan
     def all(discount=nil)
       [
         Plan.new(name: 'NADA UK Membership', price: 3_000, div: 'paypal-button-uk', discount: discount),
-        Plan.new(name: 'NADA International Membership', price: 4_000, div: 'paypal-button-international', discount: discount)
+        Plan.new(name: 'NADA International Membership', price: 4_000, div: 'paypal-button-international', discount: discount),
+        Plan.new(name: 'NADA Paperless Membership', price: 2_000, div: 'paypal-button-paperless', discount: discount),
       ]
     end
   end

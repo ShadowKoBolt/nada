@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'do-not-reply@nadadance.co.uk'
+  default from: 'info@nadadance.co.uk'
   layout 'mailer'
 
   def renew_1(user_id)

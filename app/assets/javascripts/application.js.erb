@@ -212,4 +212,32 @@ $(document).ready(function() {
       }
     }, '#paypal-button-international');
   }
+
+  if ($('#paypal-button-paperless').length > 0) {
+    var pricePaperless = $('#paypal-button-paperless').data('price');
+    paypal.Button.render({
+      env: 'production', // 'production' or 'sandbox'
+      client: {
+        sandbox:    'Aa-Fb2P6v6RQJHzxB2ZUnVF5yAaKOuMoJHdacJLMU8F1jAI_LjIbOfaC8oiv0HclZk_-JZxhx1Gy_Noz',
+        production: 'Ad2defsxcBZijRrzbDAL9tPoElkPrraXFRLorjiqteKEiYRdtZPy2RAEImKGr2e8RNim0ihhpXCOUyQz'
+      },
+      commit: true, // Show a 'Pay Now' button
+      payment: function(data, actions) {
+        return actions.payment.create({
+          payment: {
+            transactions: [
+              {
+                amount: { total: pricePaperless, currency: 'GBP' }
+              }
+            ]
+          }
+        });
+      },
+      onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function(payment) {
+          $('#paypal-success').removeClass('hide');
+        });
+      }
+    }, '#paypal-button-paperless');
+  }
 });

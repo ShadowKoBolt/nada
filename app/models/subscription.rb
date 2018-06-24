@@ -4,6 +4,7 @@ class Subscription
   attr_accessor :promo_code
   attr_accessor :coupon
   attr_accessor :stripe_token
+  attr_accessor :plan_id
 
   validate do
     if promo_code.present?

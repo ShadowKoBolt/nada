@@ -6,9 +6,9 @@ h1.text-center Its quick and easy to join NADA today!
 
 .well.mb--4
   p To pay by PayPal you can use the links below:
-  .row
+  .row.mb--4
     - Plan.all(@discount&.discount).each do |plan|
-      .col-sm-6.text-center
+      .col-sm-4.text-center
         h4 = plan.name
         p = Money.new(plan.price, 'gbp').format
         div id=plan.div data-price=plan.price_pounds

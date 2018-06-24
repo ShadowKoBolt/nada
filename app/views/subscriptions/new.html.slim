@@ -3,17 +3,28 @@
 
   =  form_for @subscription, url: show_confirmation_subscription_path, method: :get do |f|
     = render 'layouts/errors', errors: f.object.errors.full_messages
+
     .row
-      .col-sm-4.col-sm-offset-4
-        .well
-          h2 = @plan.name
-          p #{ Money.new(@plan.amount, @plan.currency).format }/#{@plan.interval}
+      .col-sm-2
+      - @plans.each do |plan|
+        .col-sm-4.mb--4
+          .well
+            label
+              h2 = plan.name
+              p #{ Money.new(plan.amount, plan.currency).format }/#{plan.interval}
+              = f.radio_button :plan_id, plan.id
+
+    .row
+      .col-xs-12
         p = link_to 'Add promo code', '#', data: { js_toggle: '[data-js-promo-code-container]' }
         .hide data-js-promo-code-container=true
           .form-group
             = f.label :promo_code, class: 'sr-only'
             = f.text_field :promo_code, class: 'form-control', placeholder: 'Promo code',
               data: { js_show_if_has_value: '[data-js-promo-code-container]'}
+
+    .row
+      .col-xs-12
         .actions
           = f.submit 'Continue to payment step', class: 'btn btn-primary'
 

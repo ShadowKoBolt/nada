@@ -29,6 +29,10 @@ class User < ApplicationRecord
     def status_filter_options
       [['Any status', nil], ['Lapsed (renewal date in past)', 'lapsed'], ['Active (renewal date in future)', 'active']]
     end
+
+    def paperless_filter_options
+      [['Paper & Paperless', nil], ['Paper', 'paper'], ['Paperless', 'paperless']]
+    end
   end
 
   def name

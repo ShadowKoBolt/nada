@@ -3,17 +3,13 @@ require 'csv'
 class Admin::UsersController < Admin::BaseController
   def index
     @users = User.order(:first_name, :last_name, :email)
-    @users = @users.search(params[:term]) if params[:term].present?
-    @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
-    @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
+    filter_users
   end
 
   def download
     @users = User.all
-    @users = @users.search(params[:term]) if params[:term].present?
-    @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
-    @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
     @users = @users.where(teacher: true) if params[:teachers]
+    filter_users
     send_data @users.to_csv, filename: "users-#{Date.today}.csv"
   end
 
@@ -73,5 +69,13 @@ class Admin::UsersController < Admin::BaseController
                                  :teacher_phone, :teaching_locations,
                                  :join_date, :renewal_date, :status, :admin,
                                  :password, :password_confirmation)
+  end
+
+  def filter_users
+    @users = @users.search(params[:term]) if params[:term].present?
+    @users = @users.where('renewal_date < ?', Date.today) if params[:status] == 'lapsed'
+    @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
+    @users = @users.where('paperless IS true') if params[:paperless] == 'paperless'
+    @users = @users.where('paperless IS false') if params[:paperless] == 'paper'
   end
 end
