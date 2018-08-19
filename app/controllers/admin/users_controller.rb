@@ -68,7 +68,7 @@ class Admin::UsersController < Admin::BaseController
                                  :country, :notes, :teacher, :teacher_email,
                                  :teacher_phone, :teaching_locations,
                                  :join_date, :renewal_date, :status, :admin,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation, :paperless)
   end
 
   def filter_users
