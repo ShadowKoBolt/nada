@@ -39,6 +39,7 @@ class SubscriptionsController < BaseController
         render action: :show_confirm
       end
     else
+      find_plans
       render action: :new
     end
   end
