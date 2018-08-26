@@ -4,10 +4,7 @@ class SubscriptionsController < BaseController
   def one_off; end
 
   def new
-    @plans = [
-      Stripe::Plan.retrieve(current_user.appropriate_plan_name),
-      Stripe::Plan.retrieve(ENV['STRIPE_PLAN_NAME_PAPERLESS'])
-    ]
+    find_plans
     @subscription = Subscription.new(plan_id: @plans.first.id)
   end
 
@@ -16,6 +13,7 @@ class SubscriptionsController < BaseController
     @plan = Stripe::Plan.retrieve(@subscription.plan_id)
     if @subscription.valid?
     else
+      find_plans
       render action: :new
     end
   end
@@ -63,5 +61,12 @@ class SubscriptionsController < BaseController
 
   def create_params
     params.require(:subscription).permit(:promo_code, :plan_id, :stripe_token)
+  end
+
+  def find_plans
+    @plans = [
+      Stripe::Plan.retrieve(current_user.appropriate_plan_name),
+      Stripe::Plan.retrieve(ENV['STRIPE_PLAN_NAME_PAPERLESS'])
+    ]
   end
 end
