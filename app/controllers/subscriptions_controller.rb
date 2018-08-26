@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 class SubscriptionsController < BaseController
   def one_off; end
 
   def new
-    @plans = Stripe::Plan.retrieve(current_user.appropriate_plan_name),
-             Stripe::Plan.retrieve(ENV['STRIPE_PLAN_NAME_PAPERLESS'])
+    @plans = [
+      Stripe::Plan.retrieve(current_user.appropriate_plan_name),
+      Stripe::Plan.retrieve(ENV['STRIPE_PLAN_NAME_PAPERLESS'])
+    ]
     @subscription = Subscription.new(plan_id: @plans.first.id)
   end
 
