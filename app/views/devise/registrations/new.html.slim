@@ -20,6 +20,8 @@ h1.text-center Join
     p And for the dancer who already has everything NADA Membership makes a great gift!
     p Its quick and easy to join NADA today!
 
+    p Want to know how we use your data? Take a look at #{ link_to "our privacy notice", "privacy-notice.pdf", target: "_blank" } and if you have any questions feel free to send us a message.
+
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form" }) do |f|
   = devise_error_messages!
   h2 About you
