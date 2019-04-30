@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  STATUS_OPTIONS = %w[ New Lapsed Confirmed ].freeze
+  STATUS_OPTIONS = %w[New Lapsed Confirmed].freeze
 
   include PgSearch
   pg_search_scope :search,
-    against: [:email, :first_name, :last_name],
-    using: { tsearch: { prefix: true, any_word: true }, trigram: { threshold: 0.1 } }
+                  against: %i[email first_name last_name],
+                  using: { tsearch: { prefix: true, any_word: true }, trigram: { threshold: 0.1 } }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :omniauthable, :rememberable
@@ -21,7 +23,7 @@ class User < ApplicationRecord
         csv << attributes
 
         all.each do |user|
-          csv << attributes.map{ |attr| user.send(attr) }
+          csv << attributes.map { |attr| user.send(attr) }
         end
       end
     end
@@ -31,7 +33,7 @@ class User < ApplicationRecord
     end
 
     def paperless_filter_options
-      [['Paper & Paperless', nil], ['Paper', 'paper'], ['Paperless', 'paperless']]
+      [['Paper & Paperless', nil], %w[Paper paper], %w[Paperless paperless]]
     end
   end
 
@@ -65,9 +67,9 @@ class User < ApplicationRecord
   end
 
   def determine_status
-    return "New" if renewal_date.nil?
-    return "Confirmed" if renewal_date > Date.today
-    "Lapsed"
+    return 'New' if renewal_date.nil?
+    return 'Confirmed' if renewal_date > Date.today
+    'Lapsed'
   end
 
   class AdminForm < Reform::Form
@@ -108,7 +110,7 @@ class User < ApplicationRecord
     end
 
     def save
-      model.status = "New"
+      model.status = 'New'
       super
     end
   end
