@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
-ruby '2.6.2'
+ruby "2.3.6"
 
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
@@ -43,19 +41,17 @@ gem 'yt'
 gem 'yt-url'
 
 group :development, :test do
-  gem 'i18n-debug'
+  gem 'pry-rails'
   gem 'letter_opener'
   gem 'letter_opener_web'
-  gem 'pry-rails'
+  gem 'i18n-debug'
 end
 
 group :development do
+  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'reek'
-  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
 end
 
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

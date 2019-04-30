@@ -122,7 +122,7 @@ class User < ApplicationRecord
     property :current_password, virtual: true
 
     validates :email, :address_line_1, :postcode, presence: true
-    validates :password, length: { minimum: 6 }, if: proc { |u| u.password.present? }
+    validates :password, length: { minimum: 6 }, if: Proc.new { |u| u.password.present? }
     validates_uniqueness_of :email
     validate do
       errors.add(:password_confirmation, 'does not match password') if password != password_confirmation
@@ -138,7 +138,7 @@ class User < ApplicationRecord
     end
 
     def save
-      model.status = 'New'
+      model.status = "New"
       super
     end
   end
