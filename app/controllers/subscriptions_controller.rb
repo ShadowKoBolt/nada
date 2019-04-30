@@ -31,7 +31,7 @@ class SubscriptionsController < BaseController
           stripe_customer_id: customer.id,
           renewal_date: 100.years.from_now,
           status: 'Confirmed',
-          paperless: @plan.id == ENV['STRIPE_PLAN_NAME_PAPERLESS']
+          paperless: @plan.id == ENV["STRIPE_PLAN_NAME_PAPERLESS"],
         )
         redirect_to members_area_path, notice: 'Subscription created'
       rescue Stripe::CardError => e
