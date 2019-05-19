@@ -5,4 +5,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     members_area_path
   end
+
+  def alba; end
 end

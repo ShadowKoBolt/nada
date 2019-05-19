@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'my_account', to: 'registrations#edit'
   end
 
+  get 'alba-orientale' => 'application#alba'
+
   get 'about' => 'about#show'
   get 'tags' => 'tags#index'
   get 'members_area' => 'members_area#show'
