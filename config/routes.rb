@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'my_account', to: 'registrations#edit'
   end
 
-  get 'alba-orientale' => 'application#alba'
+  get 'alba-orientale' => 'application#alba', as: 'festival'
 
   get 'about' => 'about#show'
   get 'tags' => 'tags#index'
