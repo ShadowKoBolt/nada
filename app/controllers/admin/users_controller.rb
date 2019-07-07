@@ -13,6 +13,13 @@ class Admin::UsersController < Admin::BaseController
     send_data @users.to_csv, filename: "users-#{Date.today}.csv"
   end
 
+  def labels
+    @users = User.all
+    filter_users
+    LabelGenerator.call(@users)
+    send_file 'labels.pdf'
+  end
+
   def new
     @user = User.new
     @user = User::AdminForm.new(@user)

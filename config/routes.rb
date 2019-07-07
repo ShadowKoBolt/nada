@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       resources :dance_classes, except: [:show]
       collection do
         get :download
+        get :labels
       end
       member do
         post :renew_success

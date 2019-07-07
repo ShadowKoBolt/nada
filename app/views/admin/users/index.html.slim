@@ -18,7 +18,8 @@ h1 #{pluralize @users.count, "User"}
   .row.mb--1
     .col-xs-12
       => link_to 'Download Users', download_admin_users_path(status: params[:status], term: params[:term], paperless: params[:paperless]), class: 'btn btn-info'
-      = link_to 'Download Teachers', download_admin_users_path(status: params[:status], term: params[:term], paperless: params[:paperless], teachers: true), class: 'btn btn-info'
+      => link_to 'Download Teachers', download_admin_users_path(status: params[:status], term: params[:term], paperless: params[:paperless], teachers: true), class: 'btn btn-info'
+      = link_to 'Download Labels', labels_admin_users_path(status: params[:status], term: params[:term], paperless: params[:paperless], teachers: true), class: 'btn btn-info'
   .row
     .col-xs-12
       = text_field_tag :email, @users.pluck(:email).join(', '), class: 'form-control'

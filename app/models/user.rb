@@ -39,8 +39,14 @@ class User < ApplicationRecord
     [first_name, last_name].join(' ')
   end
 
+  def country_name
+    country_object = ISO3166::Country[country]
+    country_object.translations[I18n.locale.to_s] || country_object.name
+  end
+
   def stripe_customer
     return nil unless stripe_customer_id?
+
     @stripe_customer ||= Stripe::Customer.retrieve(stripe_customer_id)
   rescue Stripe::InvalidRequestError
     nil
