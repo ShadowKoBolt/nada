@@ -84,5 +84,6 @@ class Admin::UsersController < Admin::BaseController
     @users = @users.where('renewal_date >= ?', Date.today) if params[:status] == 'active'
     @users = @users.where('paperless IS true') if params[:paperless] == 'paperless'
     @users = @users.where('paperless IS false') if params[:paperless] == 'paper'
+    @users = @users.where(email: params[:emails]) if params[:emails].present?
   end
 end
