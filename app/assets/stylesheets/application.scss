@@ -40,3 +40,9 @@ $panel-primary-border: $night-shadz;
 @import "classes";
 @import "text";
 @import "body";
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

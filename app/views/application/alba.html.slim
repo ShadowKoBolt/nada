@@ -68,6 +68,8 @@ p Farida & NADA's new dance adventure! We are very excited to bring you this fes
       span.glyphicon.glyphicon-piggy-bank> aria-hidden="true"
       | How can I book?
   .panel-body
+    p
+      strong In order to book your place please email #{mail_to "info@nadadance.co.uk"} with what package you'd like and we'll send you payment details.
     p We have several packaged you can choose from:
 
     .well.well-info
@@ -99,7 +101,6 @@ p Farida & NADA's new dance adventure! We are very excited to bring you this fes
         li Tickets to shows Friday and Saturday night.
         li Lanyard will be stamped 5 times for the classes they go to.
         li No solo performance slot but can perform in a troupe.
-        li Click here to book your Silver package
 
     .well
       h3 Bronze Package: £95
@@ -110,7 +111,6 @@ p Farida & NADA's new dance adventure! We are very excited to bring you this fes
         li Bronze Lanyard with name on (Not transferable)
 
     p If want to come to Saturday night show, this ticket is in addition and costs £20
-    p These packages will be released at the end of September 2019. Numbers will depend on availability at the time.
 
     .well
       h2 Tickets to Shows
@@ -189,4 +189,9 @@ p Farida & NADA's new dance adventure! We are very excited to bring you this fes
       h3.mt--0 Music Requirements
       p Music tracks should not be longer than 3.30. Any tracks that are longer than 3.30 won't be accepted by the organisation. All music must be sent to the festival organisers a week before the competition on mp3 format.
 
-p If you have ANY questions please do not hesitate to contact us!
+p.mb--5 If you have ANY questions please do not hesitate to contact us!
+
+.mb--5
+  = link_to "https://www.faridadance.com", target: "_blank" do
+    = image_tag "faridalogo2.jpg", class: "center"
+  .clearfix
