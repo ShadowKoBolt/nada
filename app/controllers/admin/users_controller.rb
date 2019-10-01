@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User::AdminForm.new(@user)
     if @user.validate(user_params)
       @user.save
-      redirect_to admin_users_path, notice: 'User updated'
+      redirect_to edit_admin_user_path(@user), notice: 'User updated'
     else
       render action: :new
     end
