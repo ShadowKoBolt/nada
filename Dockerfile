@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 
 COPY Gemfile /usr/src/app
 COPY Gemfile.lock /usr/src/app
+RUN gem update --system
 RUN bundle install --jobs=5 --retry=3
 
 COPY . /usr/src/app
